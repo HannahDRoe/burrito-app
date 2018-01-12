@@ -1,0 +1,31 @@
+body {
+  text-align: left;
+  font-family: sans-serif;
+}
+
+.ingrident-nav{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+}
+.ingrident-nav button{
+  height: 50px;
+  width: 200px;
+  margin: 5px;
+  background-color: cadetblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+.hidden{
+  display: none;
+}
+.foodItem{
+  display: flex;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
+}
