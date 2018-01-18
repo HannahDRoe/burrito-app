@@ -19,7 +19,7 @@ export const base_ingredients = [
     },
     {
         id: 'small-flour-tortilla',
-        name: ' Soft Flour Tortilla' ,
+        name: 'Soft Flour Tortilla' ,
         description: 'small and great for tacos',
         img_src: '...',
         can_add_extra: false,
@@ -39,7 +39,7 @@ export const base_ingredients = [
         id: 'black-beans',
         name: 'Black Beans',
         description: 'delicious beans',
-        img_src: '...',
+        img_src: 'https://www.kitchentreaty.com/wp-content/uploads/2015/09/supremely-delicious-black-beans-from-scratchsq-660x430.jpg',
         can_add_extra: true,
         price: 0,
         additional_price_for_extra: 0

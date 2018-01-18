@@ -3,12 +3,12 @@ import { entree_types } from '../data/entree_types';
 import EntreesBtn from './EntreesBtn';
 
 
-class SelectMealBtns extends React.Component {
+class SelectEntree extends React.Component {
 
     render() {
         return (
 
-            <div className = {this.props.state.order.entree_selected.id !== null  ? 'hidden' : 'chooseEntree'}>
+            <div>
                 <div>Choose an Entree</div>
                 {entree_types.map((entrees, i) =>
                     <EntreesBtn   i={i} 
@@ -17,6 +17,7 @@ class SelectMealBtns extends React.Component {
                         description={entrees.description} 
                         categories= {entrees.included_ingredient_category_ids} 
                         id={entrees.id} 
+                        toggleHidden={this.props.toggleHidden}
                         {...this.props} />
                 )}
 
@@ -27,4 +28,4 @@ class SelectMealBtns extends React.Component {
     }
 }
 
-export default SelectMealBtns;
+export default SelectEntree;

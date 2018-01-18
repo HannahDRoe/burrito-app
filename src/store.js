@@ -1,5 +1,5 @@
 import { createStore, compose } from 'redux';
-import shortid from 'shortid';
+import { uniqueKey } from './components/uniqueKey';
 
 import rootReducer from './reducers/rootReducer';
 
@@ -7,13 +7,13 @@ import rootReducer from './reducers/rootReducer';
 
 // import {base_ingredients } from './data/base_ingredients';
 
-let generateOrderId= shortid.generate();
 
 const defaultState = {
     order: {
-        id: generateOrderId,
+        id: { uniqueKey },
         entree_selected:{
-            id: null
+            id: null,
+            categories: []
         }
     }
 }

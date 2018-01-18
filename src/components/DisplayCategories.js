@@ -5,7 +5,7 @@ class DisplayCategories extends React.Component {
         // console.log(this.props.entreeSelected)
         return (
             <div>
-               {this.props.state.order.entree_selected.id !== null  ? this.props.state.order.entree_selected.id  : null}
+               { this.props.state.order.entree_selected.id }
             </div>
         );
     }

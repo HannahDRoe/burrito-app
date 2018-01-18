@@ -1,26 +1,15 @@
 import React from 'react';
+import { base_ingredients } from '../data/base_ingredients';
+import { IngredientGridItem } from './IngedientGridItem';
+import { uniqueKey } from './uniqueKey';
 
-function IngredentsGrid () {
-  
-    const ingredientsList = ingredients.map( (foodItem)  => {
-        // console.log(foodItem);
-        if (foodItem.meals.includes(props.mealType)) {
+
+export const IngredientsGrid = (props) =>{ 
+  return  base_ingredients.map((base, i) =>{
+        if (base.id === props.item){
             return (
-                <div key ={foodItem.id} className='foodItem'>
-                     <div>{foodItem.name}</div>
-                     {foodItem.price > 0 && <div> ${foodItem.price.toFixed(2)} </div>}
-                     {foodItem.addExtra !== 0 && <div className="foodItemAddExtra"> Add Extra? ${foodItem.addExtra.toFixed(2) } </div>  }
-                 </div> 
+                <IngredientGridItem key={uniqueKey+base.id} base = {base} />
             )
-        } else {
-                <div>Empty</div>
-
-        }
-    });
-    return (
-        <div>{ingredientsList}</div>
-    )
-       
-
+       }
+    })
 }
-export default IngredentsGrid;
