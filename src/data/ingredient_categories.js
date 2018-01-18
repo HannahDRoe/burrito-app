@@ -1,3 +1,4 @@
+import React from 'react';
 export const ingredient_categories = [
     {
         id: 'big_tortilla_category',
@@ -11,7 +12,7 @@ export const ingredient_categories = [
     },
     {
         id: 'small_tortilla_category',
-        name: 'Tortilas',
+        name: 'Taco Tortilas',
         base_ingredients_included_ids: [
             'small-flour-tortilla',
             'corn-tortilla'
@@ -67,5 +68,26 @@ export const ingredient_categories = [
             'tomatillo-red-chili'
         ],
         required: false
-    },
+    }
 ]
+
+export const findCategoryIds = function findCategoryIds(item, ingredientArray, clickHandler){
+    const findIngredients = ingredientArray.find((value, id) =>{
+         if( value.id === item){
+             return  value.name
+         }
+        
+
+     });
+    
+         return <li key = {'cat'+findIngredients.id} value={findIngredients.id} onClick={() => clickHandler(findIngredients.id)}>{findIngredients.name}</li>
+ };
+
+ export const displayIngredientCategories = function displayIngredientCategories(selectedCategoriesArray, ingredientArray, clickHandler){
+     const ingredientItems = selectedCategoriesArray.map((item) =>{
+         return findCategoryIds(item, ingredientArray, clickHandler) 
+     });
+    return ingredientItems;
+ }
+    
+     
