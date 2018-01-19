@@ -1,5 +1,59 @@
 export const base_ingredients = [
     {
+        id: 'chicken',
+        name: 'Chicken',
+        description: 'Marinated overnight and gilled fresh throughout the day',
+        img_src: '...',
+        can_add_extra: true,
+        price: 675,
+        additional_price_for_extra: 250
+    },
+    {
+        id: 'steak',
+        name: 'Steak',
+        description: 'Marinated overnight in our sipcy chipotle sauce and gilled to a perfect medium rare',
+        img_src: '...',
+        can_add_extra: true,
+        price: 775,
+        additional_price_for_extra: 350
+    },
+    {
+        id: 'carnitas',
+        name: 'Carnitas',
+        description: 'Pork that is braised for hours in our special spice blend and shredded',
+        img_src: '...',
+        can_add_extra: true,
+        price: 700,
+        additional_price_for_extra: 250
+    },
+    {
+        id: 'barbacoa',
+        name: 'Barbacoa',
+        description: 'Beef that is braised for hours in our special spice blend and shredded',
+        img_src: '...',
+        can_add_extra: true,
+        price: 750,
+        additional_price_for_extra: 325
+    },
+    {
+        id: 'sofritas',
+        name: 'Sofritas',
+        description: 'Organic tofu that is braised for hours in our special spice blend and shredded',
+        img_src: '...',
+        can_add_extra: true,
+        price: 650,
+        additional_price_for_extra: 250
+    },
+    {
+        id: 'veggies',
+        name: 'Veggies',
+        description: 'Our guacamole and fajita veggies ',
+        img_src: '...',
+        can_add_extra: true,
+        price: 650,
+        additional_price_for_extra: 250
+    },
+    {
         id: 'flour-tortilla',
         name: 'Flour Tortilla',
         description: 'a fluffy disk of goodness',
@@ -134,7 +188,7 @@ export const base_ingredients = [
         img_src: '...',
         can_add_extra: true,
         price: 200,
-        additional_price_for_extra: 0
+        additional_price_for_extra: 100
     },
     {
         id: 'queso',
@@ -143,7 +197,7 @@ export const base_ingredients = [
         img_src: '...',
         can_add_extra: true,
         price: 150,
-        additional_price_for_extra: 0
+        additional_price_for_extra: 100
     },
     {
         id: 'fresh-tomato',

@@ -14,17 +14,17 @@ function entreeSelected (state = [] , action) {
   
 }
 
-function addedToOrder (state = [], action) {
+function addToOrder (state = [], action) {
     switch (action.type) {
-        case 'ADDED_TO_ORDER':
-            console.log('A meal has been selected')
-                return [
-                   {    ...state,
-                        order:[...state.order, action.foodItem]
+        case 'ADD_TO_ORDER':
+            console.log('A meal has been selected' +action.itemId)
+                return  [...state,
+                    {   index: action.index,
+                        id: action.itemId,
+                        name: action.itemName
                     }
                 ]
-        
-    
+                
         default:
            return state;
     }
@@ -35,7 +35,7 @@ function orderMain (state= {}, action){
     return {
         ...state,
         entree_selected: entreeSelected(state.entree_selected, action),
-        addedToOrder: addedToOrder(state.addedToOrder, action)
+        orderList: addToOrder(state.orderList, action)
     }
 }
 export default orderMain;

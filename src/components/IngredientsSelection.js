@@ -23,7 +23,11 @@ displayIngredientList(categories){
    return categories.map((ingredient, i) =>{
           if(ingredient.id === this.state.selectedIngredientCategory){
               return ingredient.base_ingredients_included_ids.map((item, i) =>{
-              return  <IngredientsGrid key={uniqueKey + '-' + item}  item = {item}/> 
+              return  <IngredientsGrid 
+                        key={uniqueKey + '-' + item}  
+                        item = {item}
+                        {...this.props}
+                       /> 
             }
         )}
     })

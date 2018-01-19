@@ -2,7 +2,9 @@ body {
   text-align: left;
   font-family: sans-serif;
 }
-
+li{
+  list-style: none;
+}
 .ingrident-nav{
   display: flex;
   flex-direction: column;
@@ -28,4 +30,10 @@ body {
   margin: 20px;
   justify-content: center;
   align-items: center;
+}
+.orderConatiner{
+  position: fixed;
+  right: 300px;
+  top: 0px;
+  
 }

@@ -5,9 +5,11 @@ export  function chooseEntree(entree, categories){
         categories
     }
 }
-export function addToOrder(foodItem){
+export function addToOrder(index, itemId, itemName){
     return{
         type: 'ADD_TO_ORDER',
-        foodItem
+        index,
+        itemId,
+        itemName
     }
 }

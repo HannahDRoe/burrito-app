@@ -1,6 +1,7 @@
 import React from 'react';
 import SelectEntree  from './components/SelectEntree';
 import IngredientsSelection from './components/IngredientsSelection';
+import Order  from './components/Order';
 import { GoBackButton } from './components/GoBackButton';
 
 class Main extends React.Component {
@@ -22,7 +23,7 @@ class Main extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='mainContainer'>
                 
                 {this.state.showIngredientGrid && <GoBackButton toggleHidden = {this.toggleHidden} />}
 
@@ -32,8 +33,9 @@ class Main extends React.Component {
                 }
 
                 {this.state.showIngredientGrid &&
-                <IngredientsSelection {...this.props.state} />
+                <IngredientsSelection {...this.props.state} {...this.props}/>
                 }
+               { this.props.state.order.orderList !==[] && <Order {...this.props.state} />}
             </div>
         );
     }

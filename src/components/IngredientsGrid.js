@@ -8,7 +8,12 @@ export const IngredientsGrid = (props) =>{
   return  base_ingredients.map((base, i) =>{
         if (base.id === props.item){
             return (
-                <IngredientGridItem key={uniqueKey+base.id} base = {base} />
+                <IngredientGridItem 
+                    addToOrder={props.addToOrder}
+                    key={uniqueKey+base.id} 
+                    base = {base}
+                    index = {i}
+                    />
             )
        }
     })
