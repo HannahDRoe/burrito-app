@@ -24,7 +24,8 @@ function addToOrder (state = [], action) {
                         name: action.itemName
                     }
                 ]
-                
+        case 'RESET_ORDER':
+          return state = [];
         default:
            return state;
     }

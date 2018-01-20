@@ -13,3 +13,9 @@ export function addToOrder(index, itemId, itemName){
         itemName
     }
 }
+
+export function resetOrder(){
+    return{
+        type: 'RESET_ORDER'
+    }
+}

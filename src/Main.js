@@ -2,7 +2,7 @@ import React from 'react';
 import SelectEntree  from './components/SelectEntree';
 import IngredientsSelection from './components/IngredientsSelection';
 import Order  from './components/Order';
-import { GoBackButton } from './components/GoBackButton';
+import StartOverButton  from './components/StartOverButton';
 
 class Main extends React.Component {
     constructor () {
@@ -25,7 +25,7 @@ class Main extends React.Component {
         return (
             <div className='mainContainer'>
                 
-                {this.state.showIngredientGrid && <GoBackButton toggleHidden = {this.toggleHidden} />}
+                {this.state.showIngredientGrid && <StartOverButton toggleHidden = {this.toggleHidden} {...this.props}/>}
 
                 {!this.state.showIngredientGrid && 
                         <SelectEntree {...this.props} 
@@ -35,7 +35,7 @@ class Main extends React.Component {
                 {this.state.showIngredientGrid &&
                 <IngredientsSelection {...this.props.state} {...this.props}/>
                 }
-               { this.props.state.order.orderList !==[] && <Order {...this.props.state} />}
+               <Order {...this.props.state} />
             </div>
         );
     }
