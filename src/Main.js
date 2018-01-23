@@ -35,7 +35,7 @@ class Main extends React.Component {
                 {this.state.showIngredientGrid &&
                 <IngredientsSelection {...this.props.state} {...this.props}/>
                 }
-               <Order {...this.props.state} />
+               <Order {...this.props.state} {...this.props} />
             </div>
         );
     }

@@ -1,14 +1,14 @@
 import React from 'react';
 import { base_ingredients } from '../data/base_ingredients';
-import { IngredientGridItem } from './IngedientGridItem';
+import { IngredientListItem } from './IngredientListItem';
 import { uniqueKey } from './uniqueKey';
 
 
-export const IngredientsGrid = (props) =>{ 
+export const IngredientsList = (props) =>{ 
   return  base_ingredients.map((base, i) =>{
         if (base.id === props.item){
             return (
-                <IngredientGridItem 
+                <IngredientListItem 
                     addToOrder={props.addToOrder}
                     key={uniqueKey+base.id} 
                     base = {base}

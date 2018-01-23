@@ -12,7 +12,6 @@ class StartOverButton extends React.Component {
     }
     
     render() {
-        console.log(this.props.resetOrder)
         return (
             <button onClick={this.startOver}>
               &lt; Start Over

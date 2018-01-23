@@ -1,16 +1,16 @@
-export  function chooseEntree(entree, categories){
+export  function chooseEntree(entree){
     return{
         type: 'ENTREE_SELECTED',
         entree,
-        categories
+        
     }
 }
-export function addToOrder(index, itemId, itemName){
+export function addToOrder(itemId, itemName, itemPrice){
     return{
         type: 'ADD_TO_ORDER',
-        index,
         itemId,
-        itemName
+        itemName,
+        itemPrice
     }
 }
 

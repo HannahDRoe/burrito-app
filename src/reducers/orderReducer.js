@@ -1,42 +1,59 @@
-function entreeSelected (state = [] , action) {
+function entreeSelected (state  , action) {
     switch (action.type) {
         case 'ENTREE_SELECTED':
-            console.log('An entree has been selected ' + action.entree);
                 return{
                     ...state,
                    id: action.entree,
-                   categories: action.categories
                 }
-       
+        case 'ADD_TO_ORDER':
+                return{...state,
+                    ingredients_selected:[...state.ingredients_selected, 
+                        {
+                            id: action.itemId,
+                            name: action.itemName
+                        }
+                    ]
+                }
+
+                                
+        case 'RESET_ORDER':
+            return {    id: null,
+                        ingredients_selected:[]
+                    };
         default:
            return state;
     }
   
 }
 
-function addToOrder (state = [], action) {
+// function addToOrder (state = [], action) {
+//         default:
+//            return state;
+//     }
+
+// }
+
+function addToTotalOrderPrice(state=0, action){
     switch (action.type) {
         case 'ADD_TO_ORDER':
-            console.log('A meal has been selected' +action.itemId)
-                return  [...state,
-                    {   index: action.index,
-                        id: action.itemId,
-                        name: action.itemName
-                    }
-                ]
+        console.log('added to total order pricE! ' + action.itemPrice)
+            return { ...state,
+                total: state.total + action.itemPrice
+            }
+        
         case 'RESET_ORDER':
-          return state = [];
+            return state={total: 0};
         default:
-           return state;
+            return state;
     }
-
 }
 
 function orderMain (state= {}, action){
     return {
         ...state,
         entree_selected: entreeSelected(state.entree_selected, action),
-        orderList: addToOrder(state.orderList, action)
+        // ingredients_selected: addToOrder(state, action),
+        add_to_total_order_price: addToTotalOrderPrice(state.add_to_total_order_price, action)
     }
 }
 export default orderMain;
