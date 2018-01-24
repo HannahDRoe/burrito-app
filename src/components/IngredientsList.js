@@ -13,6 +13,7 @@ export const IngredientsList = (props) =>{
                     key={uniqueKey+base.id} 
                     base = {base}
                     index = {i}
+                    category = {props.category}
                     />
             )
        }

@@ -9,7 +9,10 @@ class IngredientsSelection extends React.Component {
         super(props);
         this.state = {
             selectedIngredientCategory: null,
-            ingredientCategories: []
+            ingredientCategories: [],
+            minIngredientsRequired: null,
+            maxIngredentsAllowed: null
+
         }
         this.handleClick = this.handleClick.bind(this); 
     
@@ -21,18 +24,35 @@ componentDidMount(){
         if(types.id === this.props.state.order.entree_selected.id){
             return this.setState({
                 ingredientCategories:  types.included_ingredient_category_ids
+                
             });
         }
     });   
+    
+
+}
+componentDidUpdate(){
 }
 
-    
 handleClick(e){
    this.setState({
     selectedIngredientCategory: e
-   })
+   }, () => this.checkCategoryLimits());
 }
 
+checkCategoryLimits(){
+    return ingredient_categories.map((category) =>{
+        // console.log(category)
+        if (category.id === this.state.selectedIngredientCategory) {
+            console.log('hi this is state ' +this.state.selectedIngredientCategory)
+            return  this.setState({
+                minIngredientsRequired: category.min_required,
+                maxIngredentsAllowed: category.max_limit
+            })
+        }
+    })
+
+}
 
 displayIngredientList(categories){
 
@@ -42,6 +62,7 @@ displayIngredientList(categories){
               return  <IngredientsList 
                         key={uniqueKey + '-' + item}  
                         item = {item}
+                        category = {this.state.selectedIngredientCategory}
                         {...this.props}
                        /> 
             }
@@ -76,6 +97,7 @@ displayIngredientCategories(){
                <ul> 
                     {this.state.ingredientCategories !== [] && this.displayIngredientCategories()}
                 </ul>
+                 {this.state.minIngredientsRequired !== null && <h5>{this.state.minIngredientsRequired <1  ? 'Pile \'em on' : 'Please Select '+ `${this.state.minIngredientsRequired}`} </h5> }
                 {this.state.selectedIngredientCategory !== null && <div> {this.displayIngredientList(ingredient_categories)} </div>}
 
             </div>

@@ -10,7 +10,8 @@ function entreeSelected (state  , action) {
                     ingredients_selected:[...state.ingredients_selected, 
                         {
                             id: action.itemId,
-                            name: action.itemName
+                            name: action.itemName,
+                            category: action.itemCategory
                         }
                     ]
                 }

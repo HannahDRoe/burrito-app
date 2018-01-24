@@ -5,12 +5,13 @@ export  function chooseEntree(entree){
         
     }
 }
-export function addToOrder(itemId, itemName, itemPrice){
+export function addToOrder(itemId, itemName, itemPrice, itemCategory){
     return{
         type: 'ADD_TO_ORDER',
         itemId,
         itemName,
-        itemPrice
+        itemPrice,
+        itemCategory
     }
 }
 
