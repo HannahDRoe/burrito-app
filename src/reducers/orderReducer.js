@@ -15,8 +15,19 @@ function entreeSelected (state  , action) {
                         }
                     ]
                 }
+        case 'REMOVE_INGREDIENT_MAX_LIMIT':
+        console.log('fuck')
+        console.log(action.filteredItemId)
+            return{
+                ingredients_selected:[
+                    ...state.ingredients_selected.slice(0, action.filteredItemId),
+                   ...state.ingredients_selected.slice(action.filteredItemId),
+                    ...state.ingredients_selected.slice(action.filteredItemId + 1)
+                               
+                ]
 
-                                
+            }
+
         case 'RESET_ORDER':
             return {    id: null,
                         ingredients_selected:[]
@@ -27,12 +38,6 @@ function entreeSelected (state  , action) {
   
 }
 
-// function addToOrder (state = [], action) {
-//         default:
-//            return state;
-//     }
-
-// }
 
 function addToTotalOrderPrice(state=0, action){
     switch (action.type) {

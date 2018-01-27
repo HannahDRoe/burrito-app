@@ -20,3 +20,10 @@ export function resetOrder(){
         type: 'RESET_ORDER'
     }
 }
+
+export function removeIngredientWhenMaxLimitIsReached(filteredItemId){
+    return {
+        type: 'REMOVE_INGREDIENT_MAX_LIMIT',
+        filteredItemId
+    }
+}

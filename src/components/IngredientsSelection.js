@@ -8,14 +8,12 @@ class IngredientsSelection extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedIngredientCategory: null,
+            selectedIngredientCategory: 'entree-protein-category',
             ingredientCategories: [],
-            minIngredientsRequired: null,
-            maxIngredentsAllowed: null
-
+            minIngredientsRequired: 1,
+            maxIngredentsAllowed: 1
         }
         this.handleClick = this.handleClick.bind(this); 
-    
     }
 
 
@@ -28,16 +26,13 @@ componentDidMount(){
             });
         }
     });   
-    
-
-}
-componentDidUpdate(){
 }
 
 handleClick(e){
    this.setState({
     selectedIngredientCategory: e
-   }, () => this.checkCategoryLimits());
+   }, () => this.checkCategoryLimits())
+
 }
 
 checkCategoryLimits(){
@@ -55,7 +50,6 @@ checkCategoryLimits(){
 }
 
 displayIngredientList(categories){
-
    return categories.map((ingredient, i) =>{
           if(ingredient.id === this.state.selectedIngredientCategory){
               return ingredient.base_ingredients_included_ids.map((item, i) =>{
@@ -63,15 +57,13 @@ displayIngredientList(categories){
                         key={uniqueKey + '-' + item}  
                         item = {item}
                         category = {this.state.selectedIngredientCategory}
+                        limitIngredients ={this.limitIngredients()}
                         {...this.props}
                        /> 
             }
         )}
     })
 }
-
-
-
 
  findCategoryIds(category){
     const findIngredients = ingredient_categories.find((value, id) =>{
@@ -88,7 +80,28 @@ displayIngredientCategories(){
         return this.findCategoryIds(category) 
     });
    return ingredientItems;
-}
+};
+
+limitIngredients(){
+   let filtered = this.props.order.entree_selected.ingredients_selected.filter((selected) =>{
+        if(selected.category === this.state.selectedIngredientCategory ){
+            return selected
+       }
+    })
+    // console.log(filtered)
+   if (filtered.length > this.state.maxIngredentsAllowed ) {
+       let filteredItemId;
+      filtered.map((filteredId) =>{ 
+          return   filteredItemId =  filteredId.id
+       });
+    console.log(filteredItemId)
+
+    let funTime = this.props.order.entree_selected.ingredients_selected.findIndex(obj => obj.id == filteredItemId);
+    console.log(funTime)
+    return this.props.removeIngredientWhenMaxLimitIsReached(funTime)
+
+   }
+};
 
     render() {
         return (
@@ -97,8 +110,9 @@ displayIngredientCategories(){
                <ul> 
                     {this.state.ingredientCategories !== [] && this.displayIngredientCategories()}
                 </ul>
-                 {this.state.minIngredientsRequired !== null && <h5>{this.state.minIngredientsRequired <1  ? 'Pile \'em on' : 'Please Select '+ `${this.state.minIngredientsRequired}`} </h5> }
-                {this.state.selectedIngredientCategory !== null && <div> {this.displayIngredientList(ingredient_categories)} </div>}
+                <h5>{this.state.minIngredientsRequired <1  ? 'Pile \'em on' : 'Please Select '+ `${this.state.minIngredientsRequired}`} </h5> 
+                <div> {this.displayIngredientList(ingredient_categories)} </div>
+                
 
             </div>
         );

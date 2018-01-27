@@ -6,7 +6,6 @@ export const OrderList = (props) =>{
   const selectedIngedientsArray = props.order.entree_selected.ingredients_selected;
   if (selectedIngedientsArray.length > 0) {
      return props.order.entree_selected.ingredients_selected.map((orderItem, i) =>{
-       console.log(orderItem.name)
       return   <li key={uniqueKey+ '-' + i}>{orderItem.name}</li>              
          })
     }else {

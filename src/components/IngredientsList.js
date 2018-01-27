@@ -8,13 +8,16 @@ export const IngredientsList = (props) =>{
   return  base_ingredients.map((base, i) =>{
         if (base.id === props.item){
             return (
-                <IngredientListItem 
-                    addToOrder={props.addToOrder}
-                    key={uniqueKey+base.id} 
-                    base = {base}
-                    index = {i}
-                    category = {props.category}
-                    />
+                <div key ={uniqueKey+i} onClick={() => {props.limitIngredients}}>
+                    <IngredientListItem 
+                        addToOrder={props.addToOrder}
+                        key={uniqueKey+base.id} 
+                        base = {base}
+                        index = {i}
+                        category = {props.category}
+                        ingredients = {props.order.entree_selected.ingredients_selected} 
+                        />
+                    </div>
             )
        }
     })
