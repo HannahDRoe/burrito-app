@@ -16,18 +16,16 @@ function entreeSelected (state  , action) {
                     ]
                 }
         case 'REMOVE_INGREDIENT_MAX_LIMIT':
-        console.log('fuck')
-        console.log(action.filteredItemId)
-            return{
+        const itemIndex = action.filteredItemId;
+        console.log( ...state.ingredients_selected.slice(0, itemIndex))
+            return{ ...state,
                 ingredients_selected:[
-                    ...state.ingredients_selected.slice(0, action.filteredItemId),
-                   ...state.ingredients_selected.slice(action.filteredItemId),
-                    ...state.ingredients_selected.slice(action.filteredItemId + 1)
-                               
+                    ...state.ingredients_selected.slice(0, itemIndex),
+                    ...state.ingredients_selected.slice(itemIndex +1)
+                    
                 ]
-
             }
-
+            
         case 'RESET_ORDER':
             return {    id: null,
                         ingredients_selected:[]

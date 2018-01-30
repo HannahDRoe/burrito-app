@@ -28,6 +28,12 @@ componentDidMount(){
     });   
 }
 
+// componentWillReceiveProps(nextProps){
+//     if (this.props.order.entree_selected.ingredients_selected.length !== this.nextProps ) {
+//         this.limitIngredients();
+//     } 
+// }
+
 handleClick(e){
    this.setState({
     selectedIngredientCategory: e
@@ -57,7 +63,7 @@ displayIngredientList(categories){
                         key={uniqueKey + '-' + item}  
                         item = {item}
                         category = {this.state.selectedIngredientCategory}
-                        limitIngredients ={this.limitIngredients()}
+                        maxIngredentsAllowed = {this.state.maxIngredentsAllowed}
                         {...this.props}
                        /> 
             }
@@ -77,32 +83,41 @@ displayIngredientList(categories){
 
 displayIngredientCategories(){
     const ingredientItems = this.state.ingredientCategories.map((category) =>{
-        return this.findCategoryIds(category) 
+        return this.findCategoryIds(category); 
     });
    return ingredientItems;
 };
 
-limitIngredients(){
-   let filtered = this.props.order.entree_selected.ingredients_selected.filter((selected) =>{
-        if(selected.category === this.state.selectedIngredientCategory ){
-            return selected
-       }
-    })
-    // console.log(filtered)
-   if (filtered.length > this.state.maxIngredentsAllowed ) {
-       let filteredItemId;
-      filtered.map((filteredId) =>{ 
-          return   filteredItemId =  filteredId.id
-       });
-    console.log(filteredItemId)
+// limitIngredients(){
+//         let  entreeSelectedIngredients= this.props.state.order.entree_selected.ingredients_selected;
 
-    let funTime = this.props.order.entree_selected.ingredients_selected.findIndex(obj => obj.id == filteredItemId);
-    console.log(funTime)
-    return this.props.removeIngredientWhenMaxLimitIsReached(funTime)
+//         let filtered = entreeSelectedIngredients.filter((selected) =>{
+//             if(selected.category === this.state.selectedIngredientCategory ){
+//                 return selected;
+//             }
+//             });
+//             console.log(filtered)
+//         let filteredItemId;    
+//         if (filtered.length >= this.state.maxIngredentsAllowed ) {
+//             return ( filteredItemId = filtered[0].id,
+//                 // console.log('yes we reacehed the max '+ filtered[0].id),
+//                 // console.log('filteredItemId = ' +filteredItemId ),
+//                 this.findIngredientsIndex(filteredItemId)
+//             )
+//         }
+//         // let findIngredientsIndex =  this.props.state.order.entree_selected.ingredients_selected.findIndex(obj => obj.id ===filteredItemId);
+//         // console.log(filteredItemId);
 
-   }
-};
+//         // return this.props.removeIngredientWhenMaxLimitIsReached(findIngredientsIndex);
+          
 
+// };
+// findIngredientsIndex(filteredItemId){
+//    let index=  this.props.state.order.entree_selected.ingredients_selected.findIndex(obj => obj.id === filteredItemId);
+//    console.log(index)
+//     return this.props.removeIngredientWhenMaxLimitIsReached(index)
+
+// }
     render() {
         return (
             <div>
