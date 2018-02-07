@@ -10,10 +10,14 @@ import rootReducer from './reducers/rootReducer';
 
 const defaultState = {
     order: {
-        id: { uniqueKey },
+         id:  uniqueKey ,
+        orderConfimationStatus: 'not-confirmed', // 'not-confirmed' 'confirming' 'confirmed'
         entree_selected:{
             id: null,
-            categories: []
+            ingredients_selected: []
+        },
+        add_to_total_order_price: {
+            total: 0
         }
     }
 }

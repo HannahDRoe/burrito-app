@@ -1,13 +1,29 @@
-export  function chooseEntree(entree, categories){
+export  function chooseEntree(entree){
     return{
         type: 'ENTREE_SELECTED',
         entree,
-        categories
+        
     }
 }
-export function addToOrder(foodItem){
+export function addToOrder(itemId, itemName, itemPrice, itemCategory){
     return{
         type: 'ADD_TO_ORDER',
-        foodItem
+        itemId,
+        itemName,
+        itemPrice,
+        itemCategory
+    }
+}
+
+export function resetOrder(){
+    return{
+        type: 'RESET_ORDER'
+    }
+}
+
+export function removeIngredientWhenMaxLimitIsReached(filteredItemId){
+    return {
+        type: 'REMOVE_INGREDIENT_MAX_LIMIT',
+        filteredItemId
     }
 }

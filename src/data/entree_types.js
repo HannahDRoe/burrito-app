@@ -19,7 +19,9 @@ export const entree_types = [
         img_src: '...',
         included_ingredient_category_ids:[
             'entree-protein-category',
-            
+            'rice_category',
+            'beans_category',
+            'salsa_category'
         ]
     },
     {
@@ -30,7 +32,8 @@ export const entree_types = [
         included_ingredient_category_ids:[
             'entree-protein-category',
             'small_tortilla_category',
-            'beans_category'
+            'beans_category',
+            'salsa_category'
         ]
 
     },
@@ -41,7 +44,9 @@ export const entree_types = [
         img_src: '...',
         included_ingredient_category_ids:[
             'entree-protein-category',
-            'beans_category'
+            'rice_category',
+            'beans_category',
+            'salsa_category'
         ]
 
     }

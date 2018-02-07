@@ -7,7 +7,8 @@ export const ingredient_categories = [
             'flour-tortilla',
             'whole-wheat-tortilla'
         ],
-        required: true
+        min_required: 1,
+        max_limit: 1
 
     },
     {
@@ -17,7 +18,8 @@ export const ingredient_categories = [
             'small-flour-tortilla',
             'corn-tortilla'
         ],
-        required: true
+        min_required: 1,
+        max_limit: 1
     },
     {
         id: 'entree-protein-category',
@@ -30,7 +32,8 @@ export const ingredient_categories = [
             'sofritas',
             'veggies'
         ],
-        required: true
+        min_required: 1,
+        max_limit: 1
     },
     {
         id: 'beans_category',
@@ -40,7 +43,8 @@ export const ingredient_categories = [
             'pinto-beans',
             'no-beans'
         ],
-        required: true
+        min_required: 1,
+        max_limit: 1
     },
     {
         id: 'rice_category',
@@ -50,7 +54,8 @@ export const ingredient_categories = [
             'brown-rice',
             'no-rice'
         ],
-        required: true
+        min_required: 1,
+        max_limit: 1
     },
     {
         id: 'salsa_category',
@@ -67,27 +72,10 @@ export const ingredient_categories = [
             'tomatillo-green-chili',
             'tomatillo-red-chili'
         ],
-        required: false
+        min_required: 0,
+        max_limit: 7
     }
 ]
 
-export const findCategoryIds = function findCategoryIds(item, ingredientArray, clickHandler){
-    const findIngredients = ingredientArray.find((value, id) =>{
-         if( value.id === item){
-             return  value.name
-         }
-        
 
-     });
-    
-         return <li key = {'cat'+findIngredients.id} value={findIngredients.id} onClick={() => clickHandler(findIngredients.id)}>{findIngredients.name}</li>
- };
-
- export const displayIngredientCategories = function displayIngredientCategories(selectedCategoriesArray, ingredientArray, clickHandler){
-     const ingredientItems = selectedCategoriesArray.map((item) =>{
-         return findCategoryIds(item, ingredientArray, clickHandler) 
-     });
-    return ingredientItems;
- }
-    
      
