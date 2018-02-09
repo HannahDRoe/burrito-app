@@ -1,8 +1,6 @@
 import React from 'react';
-import { ingredient_categories } from '../data/ingredient_categories';
 import { IngredientsList } from './IngredientsList';
 import { uniqueKey } from'./uniqueKey';
-import { entree_types } from '../data/entree_types.js'
 
 class IngredientsSelection extends React.Component {
     constructor(props) {
@@ -18,7 +16,7 @@ class IngredientsSelection extends React.Component {
 
 
 componentDidMount(){
-    entree_types.map((types) =>{
+    this.state.options.entree_types.map((types) =>{
         if(types.id === this.props.state.order.entree_selected.id){
             return this.setState({
                 ingredientCategories:  types.included_ingredient_category_ids
@@ -42,7 +40,7 @@ handleClick(e){
 }
 
 checkCategoryLimits(){
-    return ingredient_categories.map((category) =>{
+    return this.state.options.ingredient_categories.map((category) =>{
         // console.log(category)
         if (category.id === this.state.selectedIngredientCategory) {
             console.log('hi this is state ' +this.state.selectedIngredientCategory)
@@ -60,6 +58,7 @@ displayIngredientList(categories){
           if(ingredient.id === this.state.selectedIngredientCategory){
               return ingredient.base_ingredients_included_ids.map((item, i) =>{
               return  <IngredientsList 
+                        baseIngredients = {this.state.options.base_ingredients}
                         key={uniqueKey + '-' + item}  
                         item = {item}
                         category = {this.state.selectedIngredientCategory}
@@ -72,7 +71,7 @@ displayIngredientList(categories){
 }
 
  findCategoryIds(category){
-    const findIngredients = ingredient_categories.find((value, id) =>{
+    const findIngredients = this.state.options.ingredient_categories.find((value, id) =>{
          if( value.id === category){
             return  value.name
          }
@@ -126,7 +125,7 @@ displayIngredientCategories(){
                     {this.state.ingredientCategories !== [] && this.displayIngredientCategories()}
                 </ul>
                 <h5>{this.state.minIngredientsRequired <1  ? 'Pile \'em on' : 'Please Select '+ `${this.state.minIngredientsRequired}`} </h5> 
-                <div> {this.displayIngredientList(ingredient_categories)} </div>
+                <div> {this.displayIngredientList(this.state.options.ingredient_categories)} </div>
                 
 
             </div>

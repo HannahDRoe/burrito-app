@@ -1,11 +1,10 @@
 import React from 'react';
-import { base_ingredients } from '../data/base_ingredients';
 import  IngredientListItem  from './IngredientListItem';
 import { uniqueKey } from './uniqueKey';
 
 
 export const IngredientsList = (props) =>{ 
-  return  base_ingredients.map((base, i) =>{
+  return  props.baseIngredients.map((base, i) =>{
         if (base.id === props.item){
             return (
                 <div key ={uniqueKey+i}>

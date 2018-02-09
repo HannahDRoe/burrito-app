@@ -1,18 +1,17 @@
 import React from 'react';
 
-class EntreesBtn extends React.Component{
-    
-    render(){
-        const {i , entree, id, description, categories, toggleHidden} = this.props;
-        return(
-            <div key={i+id} value={id} onClick={this.props.chooseEntree.bind(null, id, [...categories])} >
-                <div onClick={toggleHidden}>
-                    {entree}
-                    <p> {description} </p>
-                </div>
-            </div>
-        )
-    }
-}
+
+const EntreesBtn = (props) =>{
+    let {entree, id, description, categories, toggleHidden, selectEntree} = props;
+
+    return(
+        <div value={id} onClick={selectEntree.bind(null, id, [...categories])} >
+            <h4>{entree}</h4>
+            <p> {description} </p>
+        </div>
+    )
+
+}   
+
 
 export default EntreesBtn;
