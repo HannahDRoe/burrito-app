@@ -1,12 +1,18 @@
 import React from 'react';
-import SelectEntree  from './components/SelectEntree';
+import SelectEntreeList  from './components/SelectEntreeList';
 import IngredientsSelection from './components/IngredientsSelection';
 import Order  from './components/Order';
 import Button  from './components/Button';
 
 class Main extends React.Component {
-
+    constructor(props){
+        super(props)
+    }
+componentWillMount() {
+    this.props.getAllData();
+}
     render() {
+        
         return (
             <div className='mainContainer'>
                 {this.props.state.order.current_order_status === 'order-started' &&
@@ -21,12 +27,21 @@ class Main extends React.Component {
 
                     </div>
                 }
-                {this.props.state.order.current_order_status === 'order-not-started'  && this.props.state.data.entree_types.length > 0 &&
-                        <SelectEntree
-                            entreeTypes = {this.props.state.data.entree_types > 0  ? this.props.state.data.entree_types  : null }
-                            selectEntree ={this.props.selectEntree}
-                        /> 
+
+     
+           {this.props.state.order.current_order_status === 'order-not-started' && this.props.state.data.entree_types && this.props.state.data.entree_types.map(entrees => {
+            return   <SelectEntreeList 
+                        key={entrees.id} 
+                        entree={entrees.name} 
+                        description={entrees.description} 
+                        categories= {entrees.included_ingredient_category_ids} 
+                        id={entrees.id} 
+                        selectEntree = {this.props.selectEntree}
+                        />
                 }
+            )}
+                
+                       
 
             </div>
         );

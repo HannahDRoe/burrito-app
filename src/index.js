@@ -5,7 +5,6 @@ import store from './store';
 import './css/index.css';
 import Connection from './Connection';
 import registerServiceWorker from './registerServiceWorker';
-import { getAllData } from './actions/actionCreators';
 
 
 const app = (

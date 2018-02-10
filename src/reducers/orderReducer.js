@@ -40,6 +40,7 @@ function currentOrderStatus(state, action) {
     switch (action.type) {
         case 'ENTREE_SELECTED':
             return  'order-started'
+
         case 'RESET_ORDER':
             return 'order-not-started'
 

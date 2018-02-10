@@ -3,9 +3,13 @@ import React from 'react';
 import EntreesBtn from './EntreesBtn';
 
 const SelectEntree = (props) => {
+    console.log(props)
+    
     return (
+        // <div>hello</div>
         <div>
             <div>Choose an Entree</div>
+            
             {props.entreeTypes.map((entrees, i) =>
                 <EntreesBtn 
                     key={entrees.id} 

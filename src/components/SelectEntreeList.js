@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const EntreesBtn = (props) =>{
+const SelectEntreeList = (props) =>{
     let {entree, id, description, categories, toggleHidden, selectEntree} = props;
 
     return(
@@ -14,4 +14,4 @@ const EntreesBtn = (props) =>{
 }   
 
 
-export default EntreesBtn;
+export default SelectEntreeList;

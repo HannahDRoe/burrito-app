@@ -28,8 +28,7 @@ const store = createStore(
     
 );
 
-store.dispatch(getAllData());
 
-
+store.dispatch(getAllData())
 
 export default store;

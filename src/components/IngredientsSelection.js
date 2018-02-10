@@ -125,7 +125,7 @@ displayIngredientCategories(){
                     {this.state.ingredientCategories !== [] && this.displayIngredientCategories()}
                 </ul>
                 <h5>{this.state.minIngredientsRequired <1  ? 'Pile \'em on' : 'Please Select '+ `${this.state.minIngredientsRequired}`} </h5> 
-                <div> {this.displayIngredientList(this.state.options.ingredient_categories)} </div>
+                <div> {this.displayIngredientList(this.props.state.data.ingredient_categories)} </div>
                 
 
             </div>
