@@ -10,8 +10,9 @@ const defaultState = {
         id:  uniqueKey ,
         current_order_status: 'order-not-started',
         orderConfimationStatus: 'not-confirmed', // 'not-confirmed' 'confirming' 'confirmed'
-        entree_selected:{
+        current_entree:{
             id: null,
+            current_ingredient_category: null,
             ingredients_selected: []
         }
     }
@@ -23,7 +24,7 @@ const store = createStore(
     defaultState,
     compose(
         applyMiddleware(thunk),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        enhancers
     )
     
 );

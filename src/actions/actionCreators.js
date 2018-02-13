@@ -23,6 +23,12 @@ export const resetOrder = () => {
     }
 }
 
+export const selectIngredientCategory = (categoryId) =>{
+    return{
+        type: 'CURRENT_INGREDIENT_CATEGORY',
+        categoryId
+    }
+}
 export const replaceIngredientWhenMaxLimitIsReached = (filteredItemId) => {
     return {
         type: 'REPLACE_INGREDIENT',
@@ -43,4 +49,4 @@ export const getAllData = () => dispatch => {
         dispatch(receiveData(allData))
     })
 }
-  
+

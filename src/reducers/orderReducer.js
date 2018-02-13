@@ -25,9 +25,14 @@ function entreeSelected (state, action) {
                     
                 ]
             }
-            
+        case 'CURRENT_INGREDIENT_CATEGORY':
+            return{
+               ...state,
+              current_ingredient_category: action.categoryId
+            }
         case 'RESET_ORDER':
             return {    id: null,
+                        current_ingredient_category: null,
                         ingredients_selected:[]
                     };
         default:
@@ -70,9 +75,21 @@ function orderMain (state= {}, action){
     return {
         ...state,
         current_order_status: currentOrderStatus(state.current_order_status, action),
-        entree_selected: entreeSelected(state.entree_selected, action),
+        current_entree: entreeSelected(state.current_entree, action),
         total_order_price: addToTotalOrderPrice(state.add_to_total_order_price, action)
     }
 }
 export default orderMain;
 
+// // Selectors 
+// export const getEntreeTypes = (state) => {
+//     console.log('get those entres!')
+//     return state.data.entree_types;
+//   }
+// export const getOrderStatus = (state) => {
+// return state.order.current_order_status;
+// }
+
+// export const getOrderId = (state) => {
+//     return state.order.id;
+//   }

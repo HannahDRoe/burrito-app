@@ -1,30 +1,33 @@
 import React from 'react';
-import { IngredientsList } from './IngredientsList';
-import { uniqueKey } from'./uniqueKey';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getOrderId, getIngredientCategoriesForEntreeType, getEntreeId } from '../reducers/selectors'
+import { IngredientsList } from '../components/IngredientsList';
+import { selectIngredientCategory } from '../actions/actionCreators';
 
-class IngredientsSelection extends React.Component {
+class IngredientsContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            selectedIngredientCategory: 'entree-protein-category',
-            ingredientCategories: [],
-            minIngredientsRequired: 1,
-            maxIngredentsAllowed: 1
-        }
-        this.handleClick = this.handleClick.bind(this); 
+        // this.state = {
+        //     selectedIngredientCategory: 'entree-protein-category',
+        //     ingredientCategories: [],
+        //     minIngredientsRequired: 1,
+        //     maxIngredentsAllowed: 1
+        // }
+        // this.handleClick = this.handleClick.bind(this); 
     }
 
 
-componentDidMount(){
-    this.state.options.entree_types.map((types) =>{
-        if(types.id === this.props.state.order.entree_selected.id){
-            return this.setState({
-                ingredientCategories:  types.included_ingredient_category_ids
+// componentDidMount(){
+//     this.state.options.entree_types.map((types) =>{
+//         if(types.id === this.props.state.order.entree_selected.id){
+//             return this.setState({
+//                 ingredientCategories:  types.included_ingredient_category_ids
                 
-            });
-        }
-    });   
-}
+//             });
+//         }
+//     });   
+// }
 
 // componentWillReceiveProps(nextProps){
 //     if (this.props.order.entree_selected.ingredients_selected.length !== this.nextProps ) {
@@ -32,12 +35,12 @@ componentDidMount(){
 //     } 
 // }
 
-handleClick(e){
-   this.setState({
-    selectedIngredientCategory: e
-   }, () => this.checkCategoryLimits())
+// handleClick(e){
+//    this.setState({
+//     selectedIngredientCategory: e
+//    }, () => this.checkCategoryLimits())
 
-}
+// }
 
 checkCategoryLimits(){
     return this.state.options.ingredient_categories.map((category) =>{
@@ -59,7 +62,7 @@ displayIngredientList(categories){
               return ingredient.base_ingredients_included_ids.map((item, i) =>{
               return  <IngredientsList 
                         baseIngredients = {this.state.options.base_ingredients}
-                        key={uniqueKey + '-' + item}  
+                        key={this.props.orderId + '-' + item}  
                         item = {item}
                         category = {this.state.selectedIngredientCategory}
                         maxIngredentsAllowed = {this.state.maxIngredentsAllowed}
@@ -120,19 +123,35 @@ displayIngredientCategories(){
     render() {
         return (
             <div>
-                
-               <ul> 
-                    {this.state.ingredientCategories !== [] && this.displayIngredientCategories()}
+                {this.props.ingredientCategories.map(category =>{
+                    return <li key = {'ingredientCat-'+category.id} value={category.id} onClick={() => this.props.selectIngredientCategory(category.id)}>{category.name}</li>
+
+                    })
+                }
+                {/* <div>{this.props.ingredientCategories}</div> */}
+               {/* <ul>  */}
+                    {/* {this.state.ingredientCategories !== [] && this.displayIngredientCategories()}
                 </ul>
                 <h5>{this.state.minIngredientsRequired <1  ? 'Pile \'em on' : 'Please Select '+ `${this.state.minIngredientsRequired}`} </h5> 
                 <div> {this.displayIngredientList(this.props.state.data.ingredient_categories)} </div>
-                
+                 */}
 
             </div>
         );
     }
-
-
 }
 
-export default IngredientsSelection;
+
+const mapStateToProps = (state) => {
+    return {
+        orderId: getOrderId(state),
+        ingredientCategories: getIngredientCategoriesForEntreeType(state),
+        entreeType: getEntreeId(state)
+    };
+}
+
+const mapDispatchToProps = (dispatch) =>{
+    return bindActionCreators({selectIngredientCategory} , dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(IngredientsContainer);

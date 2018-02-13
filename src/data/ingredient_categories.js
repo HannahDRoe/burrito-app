@@ -1,4 +1,3 @@
-import React from 'react';
 export const ingredient_categories = [
     {
         id: 'big_tortilla_category',
@@ -22,7 +21,7 @@ export const ingredient_categories = [
         max_limit: 1
     },
     {
-        id: 'entree-protein-category',
+        id: 'entree_protein_category',
         name: 'Fillings',
         base_ingredients_included_ids: [
             'chicken',
