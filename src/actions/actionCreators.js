@@ -7,13 +7,12 @@ export  const selectEntree = (entree) => {
         
     }
 }
-export const addToOrder = (itemId, itemName, itemPrice, itemCategory) => {
+export const addToOrder = (itemId, itemName, itemPrice) => {
     return{
         type: 'ADD_TO_ORDER',
         itemId,
         itemName,
-        itemPrice,
-        itemCategory
+        itemPrice
     }
 }
 
@@ -25,7 +24,7 @@ export const resetOrder = () => {
 
 export const selectIngredientCategory = (categoryId) =>{
     return{
-        type: 'CURRENT_INGREDIENT_CATEGORY',
+        type: 'INGREDIENT_CATEGORY_UPDATED',
         categoryId
     }
 }

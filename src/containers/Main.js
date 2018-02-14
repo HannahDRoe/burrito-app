@@ -5,25 +5,16 @@ import SelectEntreeItem  from '../components/SelectEntreeItem';
 import IngredientsContainer from './IngredientsContainer';
 import OrderContainer  from './OrderContainer';
 import Button  from '../components/Button';
-import { getEntreeTypes, getOrderStatus, getOrderId } from '../reducers/selectors'
+import { getEntreeTypes, getOrderStatus, getOrderId, getDataStatus } from '../reducers/selectors'
 import {selectEntree, resetOrder} from '../actions/actionCreators';
 
 class Main extends React.Component {
 
     render() {
         return (
+            
             <div className='mainContainer'>
-                {this.props.orderStatus === 'order-started' &&
-                    <div>
-                        <Button 
-                            idName = {'resetButton'}
-                            clickHandler = {this.props.resetOrder} 
-                            title = {'< Start Over'}
-                        />
-                        <IngredientsContainer />
-                        <OrderContainer/>
-                    </div>
-                }
+                { this.props.appData  && <div>Loading...</div>}
                 {this.props.orderStatus === 'order-not-started' && this.props.entreeTypes && 
                     <div>
                         <h3>Choose an Entree</h3>
@@ -39,6 +30,17 @@ class Main extends React.Component {
                         }
                     </div>
                 }
+                {this.props.orderStatus === 'order-started' &&
+                    <div>
+                        <Button 
+                            idName = {'resetButton'}
+                            clickHandler = {this.props.resetOrder} 
+                            title = {'< Start Over'}
+                        />
+                        <IngredientsContainer />
+                        <OrderContainer/>
+                    </div>
+                }
             </div>
         );
     }
@@ -48,7 +50,8 @@ const mapStateToProps = (state) => {
     return {
       entreeTypes: getEntreeTypes(state),
       orderStatus: getOrderStatus(state),
-      orderId: getOrderId(state)
+      orderId: getOrderId(state),
+      appData: getDataStatus(state)
     };
 }
 
