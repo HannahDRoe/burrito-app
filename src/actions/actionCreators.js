@@ -21,19 +21,24 @@ export const resetOrder = () => {
         type: 'RESET_ORDER'
     }
 }
-
+export const removeSelectedIngredient = (ingredientId) =>{
+    return{
+        type: 'REMOVE_SELECTED_INGREDIENT',
+        ingredientId
+    }
+}
 export const selectIngredientCategory = (categoryId) =>{
     return{
         type: 'INGREDIENT_CATEGORY_UPDATED',
         categoryId
     }
 }
-export const replaceIngredientWhenMaxLimitIsReached = (filteredItemId) => {
-    return {
-        type: 'REPLACE_INGREDIENT',
-        filteredItemId
-    }
-}
+// export const replaceIngredientWhenMaxLimitIsReached = (filteredItemId) => {
+//     return {
+//         type: 'REMOVE_SELECTED_INGREDIENT',
+//         filteredItemId
+//     }
+// }
  
 //bringing in the data
 export const receiveData = (allData) =>{

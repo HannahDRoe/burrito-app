@@ -33,7 +33,7 @@ class Main extends React.Component {
                 {this.props.orderStatus === 'order-started' &&
                     <div>
                         <Button 
-                            idName = {'resetButton'}
+                            className = {'resetButton'}
                             clickHandler = {this.props.resetOrder} 
                             title = {'< Start Over'}
                         />

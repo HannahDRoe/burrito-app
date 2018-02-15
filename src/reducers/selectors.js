@@ -25,6 +25,10 @@ const getIngredientCategoriesData = (state) => {
 
 const getBaseIngredients = (state) => {return state.data.base_ingredients}
 
+export const getIngredientsAddedToOrder = (state) =>{
+    return state.order.current_entree.ingredients_selected
+}
+
 export const getDataStatus = (state) =>{
         if (Object.keys(state.data).length === 0) {
             return true
