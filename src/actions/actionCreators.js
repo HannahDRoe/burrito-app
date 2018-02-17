@@ -7,14 +7,20 @@ export  const selectEntree = (entree) => {
         
     }
 }
-export const addToOrder = (itemId, itemName, itemPrice) => {
-    return{
+
+export const addToOrder = (itemId, itemName, itemPrice, ingredientIndex) => (dispatch) => {  
+    console.log(ingredientIndex);
+    dispatch({
         type: 'ADD_TO_ORDER',
         itemId,
         itemName,
-        itemPrice
+        itemPrice     
+    });
+    // At this line of code first dispatch has been executed and the state has been updated
+    if (Number.isInteger(ingredientIndex) ) {
+            return dispatch(removeSelectedIngredient(ingredientIndex))
     }
-}
+  };
 
 export const resetOrder = () => {
     return{
@@ -33,12 +39,7 @@ export const selectIngredientCategory = (categoryId) =>{
         categoryId
     }
 }
-// export const replaceIngredientWhenMaxLimitIsReached = (filteredItemId) => {
-//     return {
-//         type: 'REMOVE_SELECTED_INGREDIENT',
-//         filteredItemId
-//     }
-// }
+
  
 //bringing in the data
 export const receiveData = (allData) =>{
@@ -53,4 +54,3 @@ export const getAllData = () => dispatch => {
         dispatch(receiveData(allData))
     })
 }
-

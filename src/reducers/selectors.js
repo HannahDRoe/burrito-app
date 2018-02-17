@@ -22,8 +22,19 @@ export const getCurrentIngredientCategory = (state) =>{
 const getIngredientCategoriesData = (state) => {
     return state.data.ingredient_categories
 }
+const getIngredientCategoriesMaxLimit = (state) => {
+    let limit;
+    getIngredientCategoriesData(state).find((ingredientCat) =>{
+        if(ingredientCat.id === getCurrentIngredientCategory(state) ){
+            return limit = ingredientCat.max_limit
+        }
+    })
+    return limit;
+}
 
-const getBaseIngredients = (state) => {return state.data.base_ingredients}
+const getBaseIngredients = (state) => {
+    return state.data.base_ingredients
+}
 
 export const getIngredientsAddedToOrder = (state) =>{
     return state.order.current_entree.ingredients_selected
@@ -94,4 +105,33 @@ const getIngredientItem = (state, itemId) =>{
         }
     });
     return item
+}
+
+export const getNumberOfIngredientsOfSameCategory = (state)=>{
+    return getBaseIngredientList(state).filter((item) =>{
+        return getIngredientsOfSameCatetory(state, item)
+    })
+}
+const getIngredientsOfSameCatetory = (state, item) =>{
+    let addedIngredients
+     getIngredientsAddedToOrder(state).find((addedItems)=>{
+        if (addedItems.id === item) {
+            return addedIngredients = addedItems
+        }
+    })
+    return addedIngredients
+}
+
+export const  getIfIngredientMaxLimitReached = (state) => {
+    if ( getCurrentIngredientCategory(state) === null) {
+        return;
+    }else if (getNumberOfIngredientsOfSameCategory(state).length >= getIngredientCategoriesMaxLimit(state)) {
+            return getIndexOfIngredientToReplace(state)
+    }
+    
+}
+const getIndexOfIngredientToReplace = (state) =>{
+
+    const ingredientToReplace = getNumberOfIngredientsOfSameCategory(state)[0];
+    return  getIngredientsAddedToOrder(state).findIndex(obj =>{ return obj.id === ingredientToReplace});
 }

@@ -10,21 +10,10 @@ function entreeSelected (state, action) {
                 ingredients_selected:[...state.ingredients_selected, 
                     {
                         id: action.itemId,
-                        name: action.itemName,
-                        category: action.itemCategory
+                        name: action.itemName
                     }
                 ]
             }
-        // case 'REMOVE_INGREDIENT_MAX_LIMIT':
-        //     const itemIndex = action.filteredItemId;
-        //     console.log( ...state.ingredients_selected.slice(0, itemIndex))
-        //     return{ ...state,
-        //         ingredients_selected:[
-        //             ...state.ingredients_selected.slice(0, itemIndex),
-        //             ...state.ingredients_selected.slice(itemIndex +1)
-                    
-        //         ]
-        //     }
         case 'INGREDIENT_CATEGORY_UPDATED':
             return{
                ...state,
