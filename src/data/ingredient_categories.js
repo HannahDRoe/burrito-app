@@ -1,9 +1,8 @@
-import React from 'react';
 export const ingredient_categories = [
     {
         id: 'big_tortilla_category',
         name: 'Tortilas',
-        base_ingredients_included_ids: [
+        base_ingredient_ids_included: [
             'flour-tortilla',
             'whole-wheat-tortilla'
         ],
@@ -14,7 +13,7 @@ export const ingredient_categories = [
     {
         id: 'small_tortilla_category',
         name: 'Taco Tortilas',
-        base_ingredients_included_ids: [
+        base_ingredient_ids_included: [
             'small-flour-tortilla',
             'corn-tortilla'
         ],
@@ -22,9 +21,9 @@ export const ingredient_categories = [
         max_limit: 1
     },
     {
-        id: 'entree-protein-category',
+        id: 'entree_protein_category',
         name: 'Fillings',
-        base_ingredients_included_ids: [
+        base_ingredient_ids_included: [
             'chicken',
             'steak',
             'carnitas',
@@ -38,7 +37,7 @@ export const ingredient_categories = [
     {
         id: 'beans_category',
         name: 'Beans',
-        base_ingredients_included_ids: [
+        base_ingredient_ids_included: [
             'black-beans',
             'pinto-beans',
             'no-beans'
@@ -49,7 +48,7 @@ export const ingredient_categories = [
     {
         id: 'rice_category',
         name: 'Rice',
-        base_ingredients_included_ids: [
+        base_ingredient_ids_included: [
             'cilantro-rice',
             'brown-rice',
             'no-rice'
@@ -60,7 +59,7 @@ export const ingredient_categories = [
     {
         id: 'salsa_category',
         name: 'Salsa and Toppings',
-        base_ingredients_included_ids: [
+        base_ingredient_ids_included: [
             'sour-cream',
             'cheese',
             'romaine-lettuce',
