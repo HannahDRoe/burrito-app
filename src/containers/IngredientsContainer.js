@@ -19,30 +19,15 @@ componentWillMount() {
 }
 
 disableButtonClickHandler(itemId){
-    let makeDisabled;
+    let makeButtonDisabled;
     this.props.selectedIngredients.map((ingredients) =>{
-        console.log(makeDisabled)
         if (ingredients.id === itemId){
-            return makeDisabled = ingredients.addExtra
+            return makeButtonDisabled = ingredients.addExtra
         } 
     })
-    return makeDisabled;
+    return makeButtonDisabled;
 }
-// stopDuplication(itemId, itemName, itemPrice){
-//     if( this.props.selectedIngredients.length === 0){
-//         return this.props.addToOrder(itemId, itemName, itemPrice, this.props.indexOfIngredientToReplace)
-//     }else{
-//         this.props.selectedIngredients.map((ingredients) =>{
-//             console.log(this.props.selectedIngredients)
-//             if (ingredients.id === itemId){
-//                 return 
-//             }else{
-//                return this.props.addToOrder(itemId, itemName, itemPrice, this.props.indexOfIngredientToReplace)
-//             }
-//         })
-    
-//     }
-// }
+
     render() {
         return (
             <div>
