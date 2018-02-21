@@ -16,12 +16,23 @@ export const addToOrder = (itemId, itemName, itemPrice, ingredientIndex) => (dis
         itemName,
         itemPrice     
     });
-    // At this line of code first dispatch has been executed and the state has been updated
     if (Number.isInteger(ingredientIndex) ) {
             return dispatch(removeSelectedIngredient(ingredientIndex))
     }
-  };
+};
 
+export  const addExtra = (itemId) => {
+    return {
+        type: 'ADD_EXTRA',
+        itemId
+    }
+}
+export const removeExtra = (itemIndex) => {
+    return {
+        type: 'REMOVE_EXTRA',
+        itemIndex
+    }
+}
 export const resetOrder = () => {
     return{
         type: 'RESET_ORDER'
