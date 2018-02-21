@@ -131,7 +131,22 @@ export const  getIfIngredientMaxLimitReached = (state) => {
     
 }
 const getIndexOfIngredientToReplace = (state) =>{
-
     const ingredientToReplace = getNumberOfIngredientsOfSameCategory(state)[0];
     return  getIngredientsAddedToOrder(state).findIndex(obj =>{ return obj.id === ingredientToReplace});
+}
+
+export const getAddExtra = (state) =>{
+    if ( getCurrentIngredientCategory(state)=== null) {
+        return
+    }else{
+        return getBaseIngredientItemsToShow(state).map((baseItems) =>{
+            let itBeTrue;
+            getIngredientsAddedToOrder(state).map((selectedItems) => {
+                if(baseItems.id === selectedItems.id ){
+                    return itBeTrue = true
+                }
+            })
+            return itBeTrue
+        })
+    }
 }

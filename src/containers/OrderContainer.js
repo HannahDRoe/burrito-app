@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Button from '../components/Button';
 import { getIngredientsAddedToOrder, getOrderId } from '../reducers/selectors';
-import {removeSelectedIngredient} from '../actions/actionCreators';
+import {removeSelectedIngredient, removeExtra} from '../actions/actionCreators';
 
 class OrderContainer extends React.Component {
 
@@ -14,13 +14,21 @@ class OrderContainer extends React.Component {
                 <ul>
                     {this.props.selectedIngredients.map((ingredient, i) =>{
                         return <li key={this.props.orderId +'-ocsi-'+ingredient.id}>{ingredient.name} 
-                               
                                     <Button 
                                         className = {'removeItem'}
                                         clickHandler = {() =>this.props.removeSelectedIngredient(i)} 
                                         title = {'X'}
                                         value = {'remove'}
                                     />
+                               {ingredient.addExtra && <div>
+                                   <em>a little extra {ingredient.name}</em>
+                                   <Button 
+                                        className = {'removeItem'}
+                                        clickHandler = {() =>this.props.removeExtra(i)} 
+                                        title = {'X'}
+                                        value = {'remove'}
+                                    />
+                                   </div>}
                                 </li>
                     })}
                 </ul>
@@ -38,7 +46,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) =>{
-    return bindActionCreators({removeSelectedIngredient} , dispatch)
+    return bindActionCreators({removeSelectedIngredient, removeExtra} , dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(OrderContainer);
 

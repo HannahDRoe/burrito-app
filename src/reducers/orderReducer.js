@@ -10,7 +10,8 @@ function entreeSelected (state, action) {
                 ingredients_selected:[...state.ingredients_selected, 
                     {
                         id: action.itemId,
-                        name: action.itemName
+                        name: action.itemName,
+                        addExtra: false
                     }
                 ]
             }
@@ -28,8 +29,28 @@ function entreeSelected (state, action) {
                     
                 ]
             }
-    
-        case 'RESET_ORDER':
+        case 'ADD_EXTRA':
+            const itemIndex = state.ingredients_selected.findIndex(obj =>{ return obj.id === action.itemId});
+            return{
+                ...state,
+                    ingredients_selected:[
+                        ...state.ingredients_selected.slice(0, itemIndex),
+                        {...state.ingredients_selected[itemIndex],  addExtra: true},
+                        ...state.ingredients_selected.slice(itemIndex +1)
+                        
+                    ]
+            }
+        case 'REMOVE_EXTRA':
+            return{
+                ...state,
+                    ingredients_selected:[
+                        ...state.ingredients_selected.slice(0, action.itemIndex),
+                        {...state.ingredients_selected[action.itemIndex],  addExtra: false},
+                        ...state.ingredients_selected.slice(action.itemIndex +1)
+                        
+                    ]
+            }
+    case 'RESET_ORDER':
             return {    id: null,
                         current_ingredient_category: null,
                         ingredients_selected:[]
