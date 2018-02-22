@@ -9,11 +9,6 @@ export  const selectEntree = (entree) => {
 }
 
 export const addToOrder = (itemId, itemName, itemPrice, ingredientIndex) => (dispatch, getState) => {  
-    let categoryLimitException = getState().order.current_entree.current_ingredient_category;
-    if( categoryLimitException === 'salsa_category' && Number.isInteger(ingredientIndex)){
-        return 'please chooose 7'
-
-    }
     let findDuplicates = getState().order.current_entree.ingredients_selected.filter((items)=>{ if(items.id === itemId){return itemId}})
         if( findDuplicates.length < 1 ){
             dispatch({
@@ -22,11 +17,10 @@ export const addToOrder = (itemId, itemName, itemPrice, ingredientIndex) => (dis
                 itemName,
                 itemPrice     
             });
-            if (categoryLimitException !=='salsa_category' && Number.isInteger(ingredientIndex) ) {
+            if (Number.isInteger(ingredientIndex) ) {
                     return dispatch(removeSelectedIngredient(ingredientIndex))
             }
         }
-    
 };
 
 export  const addExtra = (itemId) => {
