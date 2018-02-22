@@ -7,7 +7,8 @@ import { getOrderId,
         getBaseIngredientItemsToShow, 
         getIfIngredientMaxLimitReached,
         getAddExtra,
-        getIngredientsAddedToOrder } from '../reducers/selectors'
+		getIngredientsAddedToOrder,
+		getIngredientCategoriesMaxLimit } from '../reducers/selectors'
 import  IngredientListItem  from '../components/IngredientListItem';
 
 import { selectIngredientCategory , addToOrder, addExtra} from '../actions/actionCreators';
@@ -34,10 +35,11 @@ disableButtonClickHandler(itemId){
                 {this.props.ingredientCategories.map(category =>{
                     return <li key = {'ingredientCat-'+category.id} value={category.id} onClick={() => this.props.selectIngredientCategory(category.id)}>{category.name}</li>
                     })
-                }
+				}
+				<div>{this.props.ingredientMaxLimit > 1 ? 'Pile \'em on': 'Select Just'+ ' ' + this.props.ingredientMaxLimit }</div>
                 {this.props.ingredientListItems !== null && this.props.ingredientListItems &&
                     this.props.ingredientListItems.map((item, i) => {
-                        return <IngredientListItem 
+						return <IngredientListItem 
                                     key={this.props.orderId+'-il-'+item.id} 
                                     i = {i}
                                     className ={'ingredientListItem'}
@@ -51,7 +53,7 @@ disableButtonClickHandler(itemId){
                                     disableButton = {this.disableButtonClickHandler(item.id)}
                                 />
                             })
-                }
+				}
 
             </div>
         );
@@ -68,7 +70,8 @@ const mapStateToProps = (state) => {
         ingredientListItems: getBaseIngredientItemsToShow(state),
         indexOfIngredientToReplace: getIfIngredientMaxLimitReached(state),
         canAddExtra: getAddExtra(state),
-        selectedIngredients: getIngredientsAddedToOrder(state)
+		selectedIngredients: getIngredientsAddedToOrder(state),
+		ingredientMaxLimit: getIngredientCategoriesMaxLimit(state)
 
 
     };

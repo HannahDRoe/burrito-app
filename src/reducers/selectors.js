@@ -22,7 +22,7 @@ export const getCurrentIngredientCategory = (state) =>{
 const getIngredientCategoriesData = (state) => {
     return state.data.ingredient_categories
 }
-const getIngredientCategoriesMaxLimit = (state) => {
+export const getIngredientCategoriesMaxLimit = (state) => {
     let limit;
     getIngredientCategoriesData(state).find((ingredientCat) =>{
         if(ingredientCat.id === getCurrentIngredientCategory(state) ){
@@ -46,6 +46,13 @@ export const getDataStatus = (state) =>{
         } else{ return false }
 }
 
+export const getEntreeTypeName =(state) =>{
+    return getEntreeTypes(state).map((type)=>{
+        if(type.id === getEntreeId(state)){
+            return type.name
+        }
+    })
+}
 export const getIngredientCategoriesForEntreeType = (state) => {
     return  getEntreeIngredientCategoryIds(state).map((categoryId) =>{
         return getNameAndId(getIngredientCategoriesData(state), categoryId);    
