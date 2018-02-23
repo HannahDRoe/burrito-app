@@ -6,7 +6,7 @@ import IngredientsContainer from './IngredientsContainer';
 import OrderContainer  from './OrderContainer';
 import Button  from '../components/Button';
 import { getEntreeTypes, getOrderStatus, getOrderId, getDataStatus } from '../reducers/selectors'
-import {selectEntree, resetOrder} from '../actions/actionCreators';
+import {selectEntree, resetOrder, addAnotherEntree, checkout} from '../actions/actionCreators';
 
 class Main extends React.Component {
 
@@ -15,7 +15,7 @@ class Main extends React.Component {
             
             <div className='mainContainer'>
                 { this.props.appData  && <div>Loading...</div>}
-                {this.props.orderStatus === 'order-not-started' && this.props.entreeTypes && 
+                {this.props.orderStatus === 'entree-not-started' && this.props.entreeTypes && 
                     <div>
                         <h3>Choose an Entree</h3>
                         {this.props.entreeTypes.map(entrees => {
@@ -28,9 +28,11 @@ class Main extends React.Component {
                                     />
                             })
                         }
+                        <OrderContainer/>
+
                     </div>
                 }
-                {this.props.orderStatus === 'order-started' &&
+                {this.props.orderStatus === 'entree-started'  &&
                     <div>
                         <Button 
                             className = {'resetButton'}
@@ -39,6 +41,23 @@ class Main extends React.Component {
                         />
                         <IngredientsContainer />
                         <OrderContainer/>
+                    </div>
+                }
+                {this.props.orderStatus === 'entree-completed'  &&
+                    <div>
+     
+                        <IngredientsContainer />
+                        <OrderContainer/>
+                        <Button 
+                            className = {'addAnotherEntreeButton'}
+                            clickHandler = {this.props.addAnotherEntree} 
+                            title = {'Add Another Entree?'}
+                        />
+                        <Button 
+                            className = {'checkout'}
+                            clickHandler = {this.props.checkout} 
+                            title = {'Checkout'}
+                        />
                     </div>
                 }
             </div>
@@ -56,7 +75,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) =>{
-    return bindActionCreators({selectEntree, resetOrder } , dispatch)
+    return bindActionCreators({selectEntree, resetOrder, addAnotherEntree, checkout} , dispatch)
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Main);
