@@ -53,7 +53,31 @@ export const selectIngredientCategory = (categoryId) =>{
     }
 }
 
- 
+export const finishOrder = (currentOrder) => {
+    return {
+        type: 'FINISH_ORDER',
+        currentOrder
+    }
+}
+export const finishCurrentEntree = (currentEntreeId, currentEntreeIngredients, currentEntreeTotal) => {
+    return {
+        type: 'FINISH_ENTREE',
+        currentEntreeId,
+        currentEntreeIngredients,
+        currentEntreeTotal
+    }
+}
+export const addAnotherEntree = () =>{
+   return{ 
+       type: 'ADD_ANOTHER_ENTREE'
+    }
+}
+export const checkout = () =>{
+    return{
+        type: 'CHECKOUT'
+    }
+}
+
 //bringing in the data
 export const receiveData = (allData) =>{
     return{
