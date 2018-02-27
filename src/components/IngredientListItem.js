@@ -9,7 +9,7 @@ const IngredientListItem = (props) =>{
                 <h4>{props.name} {props.price}</h4>
                 <em>{props.description}</em>
             </div>
-            {props.itemCanAddExtra === true  && props.canAddExtra[props.i] && <button disabled={props.disableButton}  onClick={props.addExtraOnClick}>Add Extra?</button>}
+            {props.itemCanAddExtra === true  && props.canAddExtra[props.i] && <button disabled={props.disableButton}  onClick={props.addExtraOnClick}>Add Extra? <em>{props.itemAddExtraPrice}</em></button>}
         </div>
         )
 

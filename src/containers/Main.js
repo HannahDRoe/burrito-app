@@ -45,9 +45,6 @@ class Main extends React.Component {
                 }
                 {this.props.orderStatus === 'entree-completed'  &&
                     <div>
-     
-                        <IngredientsContainer />
-                        <OrderContainer/>
                         <Button 
                             className = {'addAnotherEntreeButton'}
                             clickHandler = {this.props.addAnotherEntree} 

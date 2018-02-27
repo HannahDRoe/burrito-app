@@ -15,7 +15,8 @@ const defaultState = {
             current_ingredient_category: null,
             ingredients_selected: []
         },
-        completed_entrees:[]
+        completed_entrees:[],
+        total: 0
     }
 }
 const enhancers = compose( window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

@@ -39,7 +39,9 @@ const getBaseIngredients = (state) => {
 export const getIngredientsAddedToOrder = (state) =>{
     return state.order.current_entree.ingredients_selected
 }
-
+export const getOrderTotal =(state) =>{
+    return state.order.total
+}
 export const getDataStatus = (state) =>{
         if (Object.keys(state.data).length === 0) {
             return true
@@ -156,4 +158,29 @@ export const getAddExtra = (state) =>{
             return itBeTrue
         })
     }
+}
+
+const getAdditionalPriceForExtra = (state, addExtra, baseIngredients) => {
+    if(addExtra){
+        return baseIngredients.additional_price_for_extra
+    } else {return 0}
+}
+
+const getPricesToAdd =(state) => {
+    let ingredientPrice =[];
+    getBaseIngredients(state).map((baseIngredients) =>{
+       return  getIngredientsAddedToOrder(state).map((items) =>{ 
+            if(baseIngredients.id === items.id){
+                return  ingredientPrice.push(baseIngredients.price),
+                        ingredientPrice.push(getAdditionalPriceForExtra(state, items.addExtra, baseIngredients));
+            }
+        })
+    })
+    return ingredientPrice;
+}
+
+export const getEntreeTotal =(state) =>{
+    return getPricesToAdd(state)
+        .reduce((total, currentValue) => total + currentValue, 0)/100
+    
 }

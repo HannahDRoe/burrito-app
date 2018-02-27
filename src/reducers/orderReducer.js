@@ -90,26 +90,21 @@ function completedEntree(state , action){
         case 'FINISH_ENTREE':
             return [...state, {
                     id: action.currentEntreeId,
-                    ingredients: [...action.currentEntreeIngredients]
+                    ingredients: [...action.currentEntreeIngredients],
+                    entreeTotal:action.currentEntreeTotal
                 }]
         default:
             return state;    
         }
 }
-// function addToTotalOrderPrice(state=0, action){
-//     switch (action.type) {
-//         case 'ADD_TO_ORDER':
-//         console.log('added to total order pricE! ' + action.itemPrice)
-//        return  state + action.itemPrice
-        
-        
-        
-//         case 'RESET_ORDER':
-//             return state={total: 0};
-//         default:
-//             return state;
-//     }
-// }
+function orderTotal(state, action){
+    switch (action.type) {    
+    case 'FINISH_ENTREE':
+        return state + action.currentEntreeTotal
+        default:
+            return state;
+    }
+}
 
 
 function orderMain (state= {}, action){
@@ -117,7 +112,8 @@ function orderMain (state= {}, action){
         ...state,
         current_order_status: currentOrderStatus(state.current_order_status, action),
         current_entree: entreeSelected(state.current_entree, action),
-        completed_entrees: completedEntree(state.completed_entrees, action)
+        completed_entrees: completedEntree(state.completed_entrees, action),
+        total: orderTotal(state.total, action)
     }
 }
 export default orderMain;

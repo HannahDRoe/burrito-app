@@ -46,8 +46,9 @@ disableButtonClickHandler(itemId){
                                     listItemOnClick ={() =>{this.props.addToOrder(item.id, item.name, item.price, this.props.indexOfIngredientToReplace)}}
                                     name = {item.name}
                                     description = {item.description}
-                                    price = { item.price > 0 && <span> {(item.price /100).toFixed(2)}</span>}
+                                    price = { item.price > 0 && <em>${(item.price /100).toFixed(2)}</em>}
                                     itemCanAddExtra ={item.can_add_extra}
+                                    itemAddExtraPrice = {item.additional_price_for_extra > 0 && <em>${(item.additional_price_for_extra/100).toFixed(2)}</em>}
                                     canAddExtra={this.props.canAddExtra}
                                     addExtraOnClick ={() =>{this.props.addExtra(item.id)}}
                                     disableButton = {this.disableButtonClickHandler(item.id)}

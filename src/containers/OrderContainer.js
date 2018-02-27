@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Button from '../components/Button';
-import { getIngredientsAddedToOrder, getOrderId, getEntreeTypeName , getEntreeId} from '../reducers/selectors';
+import { getIngredientsAddedToOrder, getOrderId, getEntreeTypeName , getEntreeId, getEntreeTotal, getORderTotal, getOrderTotal} from '../reducers/selectors';
 import {removeSelectedIngredient, removeExtra, finishCurrentEntree} from '../actions/actionCreators';
 
 class OrderContainer extends React.Component {
-
+    
     render() {
         return (
             <div className='orderConatiner'>
@@ -33,8 +33,14 @@ class OrderContainer extends React.Component {
                                 </li>
                     })}
                 </ul>
-                    <div>This is where the total lives</div>
-                    <button onClick={() =>this.props.finishCurrentEntree(this.props.currentEntreeId,  this.props.selectedIngredients)}>Finish it!</button>
+                    <div>${(this.props.entreeTotal).toFixed(2)}</div>
+                   {<button 
+                        onClick={() => this.props.finishCurrentEntree(this.props.currentEntreeId, this.props.selectedIngredients, this.props.entreeTotal)}
+                        disabled ={this.props.selectedIngredients < 1}
+                        className ={this.props.selectedIngredients <1 ? 'addSomethingBtn' : 'finishItBtn'}>
+                        {this.props.selectedIngredients < 1 ? 'Add something' : 'Finish it!' }
+                    </button>}
+                    <div>${(this.props.orderTotal).toFixed(2)}</div>
             </div>
         );
     }
@@ -45,7 +51,9 @@ const mapStateToProps = (state) => {
       selectedIngredients: getIngredientsAddedToOrder(state),
       orderId: getOrderId(state),
       entreeName: getEntreeTypeName(state),
-      currentEntreeId: getEntreeId(state)
+      currentEntreeId: getEntreeId(state),
+      entreeTotal: getEntreeTotal(state),
+      orderTotal: getOrderTotal(state)
     };
 }
 
