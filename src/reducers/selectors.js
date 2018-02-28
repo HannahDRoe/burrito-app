@@ -1,27 +1,18 @@
 // Selectors 
-export const getEntreeTypes = (state) => {
-    return state.data.entree_types;
-}
+export const getEntreeTypes = (state) => state.data.entree_types;
 
-export const getOrderStatus = (state) => {
-    return state.order.current_order_status;
-}
+export const getOrderStatus = (state) => state.order.current_order_status;
 
-export const getOrderId = (state) => {
-    return state.order.id;
-}
+export const getOrderId = (state) => state.order.id;
 
-export const getEntreeId = (state) => {
-   return state.order.current_entree.id
-}
+export const getEntreeId = (state) => state.order.current_entree.id;
 
-export const getCurrentIngredientCategory = (state) =>{
-    return state.order.current_entree.current_ingredient_category
-}
+export const getCurrentIngredientCategory = (state) => state.order.current_entree.current_ingredient_category;
 
-const getIngredientCategoriesData = (state) => {
-    return state.data.ingredient_categories
-}
+const getIngredientCategoriesData = (state) => state.data.ingredient_categories;
+
+const getBaseIngredients = (state) => state.data.base_ingredients;
+
 export const getIngredientCategoriesMaxLimit = (state) => {
     let limit;
     getIngredientCategoriesData(state).find((ingredientCat) =>{
@@ -32,28 +23,21 @@ export const getIngredientCategoriesMaxLimit = (state) => {
     return limit;
 }
 
-const getBaseIngredients = (state) => {
-    return state.data.base_ingredients
-}
+export const getIngredientsAddedToOrder = (state) => state.order.current_entree.ingredients_selected;
 
-export const getIngredientsAddedToOrder = (state) =>{
-    return state.order.current_entree.ingredients_selected
-}
-export const getOrderTotal =(state) =>{
-    return state.order.total
-}
-export const getDataStatus = (state) =>{
-        if (Object.keys(state.data).length === 0) {
-            return true
-        } else{ return false }
-}
+
+export const getCompletedEntrees = (state) => state.order.completed_entrees;
+
+export const getDataStatus = (state) => Object.keys(state.data).length === 0
 
 export const getEntreeTypeName =(state) =>{
-    return getEntreeTypes(state).map((type)=>{
+    let entreeName;
+     getEntreeTypes(state).map((type)=>{
         if(type.id === getEntreeId(state)){
-            return type.name
+            return entreeName = type.name;
         }
     })
+    return entreeName
 }
 export const getIngredientCategoriesForEntreeType = (state) => {
     return  getEntreeIngredientCategoryIds(state).map((categoryId) =>{
@@ -84,7 +68,7 @@ const getNameAndId = (state, itemId) =>{
 }
 
 export const getBaseIngredientItemsToShow = (state) =>{
-    if ( getCurrentIngredientCategory(state)=== null) {
+    if ( getCurrentIngredientCategory(state) === null) {
         return
     }else{
        return getBaseIngredientItems(state)
@@ -139,6 +123,7 @@ export const  getIfIngredientMaxLimitReached = (state) => {
     }
     
 }
+
 const getIndexOfIngredientToReplace = (state) =>{
     const ingredientToReplace = getNumberOfIngredientsOfSameCategory(state)[0];
     return  getIngredientsAddedToOrder(state).findIndex(obj =>{ return obj.id === ingredientToReplace});
@@ -182,5 +167,12 @@ const getPricesToAdd =(state) => {
 export const getEntreeTotal =(state) =>{
     return getPricesToAdd(state)
         .reduce((total, currentValue) => total + currentValue, 0)/100
-    
 }
+
+export const getOrderTotal =(state) => {
+  if(getCompletedEntrees(state).length >0){
+    return getCompletedEntrees(state).map((entrees) => entrees.entreeTotal)
+    .reduce((total, currentVal) => total + currentVal)
+  }
+}
+

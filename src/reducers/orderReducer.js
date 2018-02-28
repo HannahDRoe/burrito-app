@@ -1,66 +1,4 @@
-function entreeSelected (state, action) {
-    switch (action.type) {
-        case 'ENTREE_SELECTED':
-            return{
-                ...state,
-                id: action.entree
-            }
-        case 'ADD_TO_ORDER':
-            return{...state,
-                ingredients_selected:[...state.ingredients_selected, 
-                    {
-                        id: action.itemId,
-                        name: action.itemName,
-                        addExtra: false
-                    }
-                ]
-            }
-        case 'INGREDIENT_CATEGORY_UPDATED':
-            return{
-               ...state,
-              current_ingredient_category: action.categoryId
-            }
-        case 'REMOVE_SELECTED_INGREDIENT':
-            const ingredientIndex = action.ingredientId;
-            return{ ...state,
-                ingredients_selected:[
-                    ...state.ingredients_selected.slice(0, ingredientIndex),
-                    ...state.ingredients_selected.slice(ingredientIndex +1)
-                    
-                ]
-            }
-        case 'ADD_EXTRA':
-            const itemIndex = state.ingredients_selected.findIndex(obj =>{ return obj.id === action.itemId});
-            return{
-                ...state,
-                    ingredients_selected:[
-                        ...state.ingredients_selected.slice(0, itemIndex),
-                        {...state.ingredients_selected[itemIndex],  addExtra: true},
-                        ...state.ingredients_selected.slice(itemIndex +1)
-                        
-                    ]
-            }
-        case 'REMOVE_EXTRA':
-            return{
-                ...state,
-                    ingredients_selected:[
-                        ...state.ingredients_selected.slice(0, action.itemIndex),
-                        {...state.ingredients_selected[action.itemIndex],  addExtra: false},
-                        ...state.ingredients_selected.slice(action.itemIndex +1)
-                        
-                    ]
-            }
-    case 'RESET_ORDER', 
-            'ADD_ANOTHER_ENTREE' :
-            return {    id: null,
-                        current_ingredient_category: null,
-                        ingredients_selected:[]
-                    };
-        default:
-           return state;
-    }
-  
-}
+import entreeSelected from './currentEntreeReducer';
 
 function currentOrderStatus(state, action) {
     switch (action.type) {
@@ -72,17 +10,12 @@ function currentOrderStatus(state, action) {
             return 'entree-completed'
         case  'ADD_ANOTHER_ENTREE':
             return 'entree-not-started'
+        case 'CHECKOUT':
+            return 'order-checkout'
         default:
             return state;
     }
 
-}
-
-function removeIngredient(state, action) {
-    switch (action.type) {
-        default:
-            return state;
-    }
 }
 
 function completedEntree(state , action){
@@ -90,21 +23,29 @@ function completedEntree(state , action){
         case 'FINISH_ENTREE':
             return [...state, {
                     id: action.currentEntreeId,
+                    entree_type: action.currentEntreeName,
                     ingredients: [...action.currentEntreeIngredients],
-                    entreeTotal:action.currentEntreeTotal
+                    entreeTotal: action.currentEntreeTotal
                 }]
+        case 'REMOVE_COMPLETED_ENTREE':
+            return [
+                ...state.slice(0, action.entreeIndex),
+                ...state.slice(action.entreeIndex +1)
+            ]
         default:
             return state;    
         }
 }
-function orderTotal(state, action){
-    switch (action.type) {    
-    case 'FINISH_ENTREE':
-        return state + action.currentEntreeTotal
-        default:
-            return state;
-    }
-}
+
+// function orderTotal(state, action){
+//     switch (action.type) {    
+//     case 'FINISH_ENTREE':
+//         return state + action.currentEntreeTotal
+
+//         default:
+//             return state;
+//     }
+// }
 
 
 function orderMain (state= {}, action){
@@ -113,7 +54,7 @@ function orderMain (state= {}, action){
         current_order_status: currentOrderStatus(state.current_order_status, action),
         current_entree: entreeSelected(state.current_entree, action),
         completed_entrees: completedEntree(state.completed_entrees, action),
-        total: orderTotal(state.total, action)
+        // total: orderTotal(state.total, action)
     }
 }
 export default orderMain;

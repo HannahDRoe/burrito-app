@@ -1,7 +1,6 @@
 import React from 'react';
 
 const IngredientListItem = (props) =>{
-
     return (     
         <div className= {props.className}>
             <div onClick={props.listItemOnClick}>
@@ -11,10 +10,7 @@ const IngredientListItem = (props) =>{
             </div>
             {props.itemCanAddExtra === true  && props.canAddExtra[props.i] && <button disabled={props.disableButton}  onClick={props.addExtraOnClick}>Add Extra? <em>{props.itemAddExtraPrice}</em></button>}
         </div>
-        )
-
-    
-
+    )
 }
 
 
