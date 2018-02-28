@@ -59,10 +59,11 @@ export const finishOrder = (currentOrder) => {
         currentOrder
     }
 }
-export const finishCurrentEntree = (currentEntreeId, currentEntreeIngredients, currentEntreeTotal) => {
+export const finishCurrentEntree = (currentEntreeId, currentEntreeName, currentEntreeIngredients, currentEntreeTotal) => {
     return {
         type: 'FINISH_ENTREE',
         currentEntreeId,
+        currentEntreeName,
         currentEntreeIngredients,
         currentEntreeTotal
     }
@@ -77,7 +78,12 @@ export const checkout = () =>{
         type: 'CHECKOUT'
     }
 }
-
+export const removeCompletedEntree =(entreeIndex) =>{
+    return {
+        type: 'REMOVE_COMPLETED_ENTREE',
+        entreeIndex
+    }
+}
 //bringing in the data
 export const receiveData = (allData) =>{
     return{
