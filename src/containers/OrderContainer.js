@@ -15,10 +15,11 @@ import {removeSelectedIngredient, removeExtra, finishCurrentEntree, removeComple
 class OrderContainer extends React.Component {
     completedEntreesCheckoutButton() {
         if(this.props.currentEntreeId !== null){
-            return this.props.finishCurrentEntree(this.props.currentEntreeId, this.props.entreeTypeName, this.props.selectedIngredients, this.props.entreeTotal),
-                this.props.checkout
+            this.props.finishCurrentEntree(this.props.currentEntreeId, this.props.entreeTypeName, this.props.selectedIngredients, this.props.entreeTotal),
+            this.props.checkout()
+                
         }else{ 
-            return this.props.checkout
+            return this.props.checkout()
         }
     }
     render() {
@@ -83,7 +84,7 @@ class OrderContainer extends React.Component {
                         <div>${(this.props.orderTotal).toFixed(2)}</div>
                         <Button 
                             className = {'checkout'}
-                            clickHandler = {this.completedEntreesCheckoutButton()} 
+                            clickHandler = {() => this.completedEntreesCheckoutButton()} 
                             title = {'Checkout'}
                         />
                     </div>

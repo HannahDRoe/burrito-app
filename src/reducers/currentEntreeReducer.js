@@ -52,6 +52,7 @@ function entreeSelected (state, action) {
             }
     case 'RESET_ORDER':
     case 'ADD_ANOTHER_ENTREE' :
+    case 'FINISH_ENTREE':
             return {    id: null,
                         current_ingredient_category: null,
                         ingredients_selected:[]
