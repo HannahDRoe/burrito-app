@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import SelectEntreeItem  from '../components/SelectEntreeItem';
 import IngredientsContainer from './IngredientsContainer';
 import OrderContainer  from './OrderContainer';
+import CheckoutContainer from './CheckoutContainer';
 import Button  from '../components/Button';
 import { getEntreeTypes, getOrderStatus, getOrderId, getDataStatus } from '../reducers/selectors'
 import {selectEntree, resetOrder, addAnotherEntree, checkout} from '../actions/actionCreators';
@@ -13,10 +14,10 @@ class Main extends React.Component {
     render() {
         return (
             
-            <div className='mainContainer'>
-                { this.props.appData  && <div>Loading...</div>}
+            <main className='mainContainer'>
+                {this.props.appData  && <h1>Loading...</h1>}
                 {this.props.orderStatus === 'entree-not-started' && this.props.entreeTypes && 
-                    <div>
+                    <section>
                         <h3>Choose an Entree</h3>
                         {this.props.entreeTypes.map(entrees => {
                             return <SelectEntreeItem 
@@ -29,8 +30,7 @@ class Main extends React.Component {
                             })
                         }
                         <OrderContainer/>
-
-                    </div>
+                    </section>
                 }
                 {this.props.orderStatus === 'entree-started'  &&
                     <div>
@@ -57,7 +57,18 @@ class Main extends React.Component {
                         />
                     </div>
                 }
-            </div>
+                {this.props.orderStatus === 'order-checkout'  &&
+                    <div> 
+                        <CheckoutContainer/>
+                    </div>
+                }
+                {this.props.orderStatus === 'order-placed' &&
+                    <div>
+                        Thank you for your order!
+                    </div>
+                }
+
+            </main>
         );
     }
 }

@@ -12,6 +12,10 @@ function currentOrderStatus(state, action) {
             return 'entree-not-started'
         case 'CHECKOUT':
             return 'order-checkout'
+        case  'GO_BACK':
+            return 'entree-not-started'
+        case 'PLACE_ORDER':
+            return 'order-placed'
         default:
             return state;
     }
@@ -34,7 +38,7 @@ function completedEntree(state , action){
             ]
         default:
             return state;    
-        }
+    }
 }
 
 // function orderTotal(state, action){

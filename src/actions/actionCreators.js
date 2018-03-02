@@ -78,6 +78,16 @@ export const checkout = () =>{
         type: 'CHECKOUT'
     }
 }
+export const placeOrder = () =>{
+    return{
+        type: 'PLACE_ORDER'
+    }
+}
+export const goBackToAddingFood = () =>{
+    return {
+        type: 'GO_BACK'
+    }
+}
 export const removeCompletedEntree =(entreeIndex) =>{
     return {
         type: 'REMOVE_COMPLETED_ENTREE',
