@@ -13,27 +13,29 @@ class Main extends React.Component {
 
     render() {
         return (
-            
-            <main className='mainContainer'>
-                {this.props.appData  && <h1>Loading...</h1>}
+            <main id='mainContainer'>
+                {this.props.appData  && <h1 id='loading'>Loading...</h1>}
                 {this.props.orderStatus === 'entree-not-started' && this.props.entreeTypes && 
-                    <section>
+                    <section id='selectEntreeContainer'>
                         <h3>Choose an Entree</h3>
-                        {this.props.entreeTypes.map(entrees => {
-                            return <SelectEntreeItem 
-                                        key={this.props.orderId+ '-'+ entrees.id}
-                                        entree={entrees.name} 
-                                        description={entrees.description} 
-                                        id={entrees.id} 
-                                        onClick ={() => this.props.selectEntree(entrees.id)}
-                                    />
-                            })
-                        }
+                        <div id='selectEntree'>
+                            {this.props.entreeTypes.map(entrees => {
+                                return <SelectEntreeItem 
+                                            className={'entreeTypes'}
+                                            key={this.props.orderId+ '-'+ entrees.id}
+                                            entree={entrees.name} 
+                                            description={entrees.description} 
+                                            id={entrees.id} 
+                                            onClick ={() => this.props.selectEntree(entrees.id)}
+                                        />
+                                })
+                            }
+                        </div>
                         <OrderContainer/>
                     </section>
                 }
                 {this.props.orderStatus === 'entree-started'  &&
-                    <div>
+                    <section id='selectIngredientsContainer' >
                         <Button 
                             className = {'resetButton'}
                             clickHandler = {this.props.resetOrder} 
@@ -41,17 +43,17 @@ class Main extends React.Component {
                         />
                         <IngredientsContainer />
                         <OrderContainer/>
-                    </div>
+                    </section>
                 }
                 {this.props.orderStatus === 'entree-completed'  &&
-                    <div>
+                    <div id='finshedEntree'>
                         <Button 
                             className = {'addAnotherEntreeButton'}
                             clickHandler = {this.props.addAnotherEntree} 
                             title = {'Add Another Entree?'}
                         />
                         <Button 
-                            className = {'checkout'}
+                            className = {'checkoutFinishedEntree'}
                             clickHandler = {this.props.checkout} 
                             title = {'Checkout'}
                         />

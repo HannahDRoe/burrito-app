@@ -31,31 +31,41 @@ disableButtonClickHandler(itemId){
 
     render() {
         return (
-            <div>
-                {this.props.ingredientCategories.map(category =>{
-                    return <li key = {'ingredientCat-'+category.id} value={category.id} onClick={() => this.props.selectIngredientCategory(category.id)}>{category.name}</li>
-                    })
-				}
-				<div>{this.props.ingredientMaxLimit > 1 ? 'Pile \'em on': 'Select Just'+ ' ' + this.props.ingredientMaxLimit }</div>
-                {this.props.ingredientListItems !== null && this.props.ingredientListItems &&
-                    this.props.ingredientListItems.map((item, i) => {
-						return <IngredientListItem 
-                                    key={this.props.orderId+'-il-'+item.id} 
-                                    i = {i}
-                                    className ={'ingredientListItem'}
-                                    listItemOnClick ={() =>{this.props.addToOrder(item.id, item.name, item.price, this.props.indexOfIngredientToReplace)}}
-                                    name = {item.name}
-                                    description = {item.description}
-                                    price = { item.price > 0 && <em>${(item.price /100).toFixed(2)}</em>}
-                                    itemCanAddExtra ={item.can_add_extra}
-                                    itemAddExtraPrice = {item.additional_price_for_extra > 0 && <em>${(item.additional_price_for_extra/100).toFixed(2)}</em>}
-                                    canAddExtra={this.props.canAddExtra}
-                                    addExtraOnClick ={() =>{this.props.addExtra(item.id)}}
-                                    disableButton = {this.disableButtonClickHandler(item.id)}
-                                />
+            <div id='ingredientsContainer'>
+                <nav id='ingredientCategoryNav'>
+                    <ul>
+                        {this.props.ingredientCategories.map(category =>{
+                            return <li className = {this.props.currentIngredientCategory=== category.id ? 'currentCategory' : ''}
+                                    key = {'ingredientCat-'+category.id} 
+                                    value={category.id} 
+                                    onClick={() => this.props.selectIngredientCategory(category.id)}>
+                                        {category.name}
+                                    </li>
                             })
-				}
-
+                        }
+                    </ul>
+                </nav>
+				{/* <h4>{this.props.ingredientMaxLimit > 1 ? 'Pile \'em on': 'Select Just'+ ' ' + this.props.ingredientMaxLimit }</h4> */}
+                <div id='ingredientListItemsContainer'>
+                    {this.props.ingredientListItems !== null && this.props.ingredientListItems &&
+                        this.props.ingredientListItems.map((item, i) => {
+                            return <IngredientListItem 
+                                        key={this.props.orderId+'-il-'+item.id} 
+                                        i = {i}
+                                        className ={'ingredientListItem'}
+                                        listItemOnClick ={() =>{this.props.addToOrder(item.id, item.name, item.price, this.props.indexOfIngredientToReplace)}}
+                                        name = {item.name}
+                                        description = {item.description}
+                                        price = { item.price > 0 && (item.price /100).toFixed(2)}
+                                        itemCanAddExtra ={item.can_add_extra}
+                                        itemAddExtraPrice = {item.additional_price_for_extra > 0 && (item.additional_price_for_extra/100).toFixed(2)}
+                                        canAddExtra={this.props.canAddExtra}
+                                        addExtraOnClick ={() =>{this.props.addExtra(item.id)}}
+                                        disableButton = {this.disableButtonClickHandler(item.id)}
+                                    />
+                                })
+                    }
+                </div>
             </div>
         );
     }

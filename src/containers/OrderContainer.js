@@ -24,13 +24,13 @@ class OrderContainer extends React.Component {
     }
     render() {
         return (
-            <div className='orderConatiner'>
+            <div id='orderConatiner'>
                 <h3> Your Order</h3>
                 <h4>{this.props.entreeTypeName}</h4>
-                <ul>
+                <ul id='selectedIngredientsList'>
                     {this.props.selectedIngredients.map((ingredient, i) =>{
                         return <li key={this.props.orderId +'-ocsi-'+ingredient.id}>
-                                <div>
+                                <div className='selectedIngredientItem'>
                                     <p>{ingredient.name}</p>
                                     <Button 
                                         className = {'removeItem'}
@@ -40,12 +40,12 @@ class OrderContainer extends React.Component {
                                     />
                                 </div>
                                 {ingredient.addExtra &&
-                                    <div>
-                                        <p>little extra {ingredient.name}</p>
+                                    <div className='addedExtraIngredient'>
+                                        <p>extra {ingredient.name}</p>
                                         <Button 
                                                 className = {'removeItem'}
                                                 clickHandler = {() =>this.props.removeExtra(i)} 
-                                                title = {'X'}
+                                                title = {'x'}
                                                 value = {'remove'}
                                             />
                                     </div>
@@ -53,7 +53,7 @@ class OrderContainer extends React.Component {
                             </li>
                     })}
                 </ul>
-                <div>${(this.props.entreeTotal).toFixed(2)}</div>
+                <h2  className='orderTotal'>{this.props.entreeTotal > 0 ? '$' + (this.props.entreeTotal).toFixed(2) : ''}</h2>
                 {<button 
                         onClick={() => this.props.finishCurrentEntree(this.props.currentEntreeId, this.props.entreeTypeName, this.props.selectedIngredients, this.props.entreeTotal)}
                         disabled ={this.props.selectedIngredients < 1}
@@ -63,7 +63,7 @@ class OrderContainer extends React.Component {
                 }
                 {this.props.completedEntrees.length >= 1 && 
                     <div>
-                        <ul>
+                        <ul id='completedEntreeList'>
                         {this.props.completedEntrees.map((entrees, i) =>{
                             return (
                                 <li key={'completedEntree ' + i}>
@@ -72,7 +72,7 @@ class OrderContainer extends React.Component {
                                             <Button 
                                             className = {'removeItem'}
                                             clickHandler = {() =>this.props.removeCompletedEntree(i)} 
-                                            title = {'X'}
+                                            title = {'x'}
                                             value = {'remove'}
                                             />
                                         </span>
@@ -81,7 +81,7 @@ class OrderContainer extends React.Component {
                                 </li>)
                         })}
                         </ul>
-                        <div>${(this.props.orderTotal).toFixed(2)}</div>
+                        <h2 className='orderTotal'>${(this.props.orderTotal).toFixed(2)}</h2>
                         <Button 
                             className = {'checkout'}
                             clickHandler = {() => this.completedEntreesCheckoutButton()} 

@@ -1,39 +1,225 @@
 body {
-  text-align: left;
+  background-color: #F8F2ED;
   font-family: sans-serif;
+  /* color:#141C1C; */
+  /* overflow-x: scroll; */
+  /* width: 100%; */
+  margin: 0 auto;
 }
+
 li{
   list-style: none;
 }
-.ingrident-nav{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  
+
+#mainContainer{
+  margin: 20px auto;
 }
-.ingrident-nav button{
+
+#selectEntreeContainer{
+  display: flex;
+  justify-content: center;
+
+}
+
+#selectEntreeContainer > h3{
   height: 50px;
-  width: 200px;
-  margin: 5px;
-  background-color: cadetblue;
+  text-align: center;
+}
+
+#selectEntree{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  border: none;
-  cursor: pointer;
+  align-content: center;
+  margin-top: 50px;
+  flex-basis: 53%;
 }
-.hidden{
-  display: none;
-}
-.foodItem{
-  display: flex;
+
+.entreeTypes{
+  max-width: 400px;
   margin: 20px;
+}
+
+#selectIngredientsContainer{
+  display: flex;
   justify-content: center;
+  margin: 50px;
+}
+#ingredientsContainer{
+  /* margin: 0 auto; */
+  flex-grow: 3;
+}
+
+#ingredientsContainer h4{
+  text-align: center;
+}
+button{
+  border-radius: 3px;
+  border: none;
+
+}
+.resetButton{
+  height: 30px;
+  min-width: 125px;
+  position: relative;
+  /* background-color:#273242; */
+  background-color: #EE9C49;
+  /* color: #fff; */
+  /* left: 30px; */
+ 
+}
+
+.resetButton:hover{
+  cursor: pointer;
+  /* background-color: #313E52; */
+  background-color:#F0A960;
+
+}
+.currentCategory{
+  background-color: #C53730;
+  color: #fff;
+  border-radius: 3px;
+}
+#ingredientCategoryNav{
+  margin-top: 50px;
+  width: 200px;
+  font-size: 18px;
+  /* left: 15%; */
+
+}
+#ingredientCategoryNav ul{
+  padding: 0;
+}
+#ingredientCategoryNav ul li{
+  cursor: pointer;
+  padding: 10px;
+}
+#ingredientListItemsContainer{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  padding: 0 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.ingredientListItem{
+  width: 250px;
+  height: 150px;
+  margin: 10px;
+  text-align: center;
+  font-style: italic;
+}
+.ingredientListItem p{
+  margin: 0;
+}
+.addExtraButton{
+  margin: 15px auto;
+  height: 30px;
+  background-color:#273242;
+
+  /* background-color: #3B5654; */
+  color: #fff;
+}
+.addExtraButton:disabled{
+  cursor: not-allowed;
+
+}
+#finshedEntree{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding-top: 100px;
+}
+#finshedEntree button{
+ margin: 10px;
+}
+#orderConatiner{
+  width: 250px;
+  height: 100%;
+
+
+}
+#orderContainer h4{
+
+}
+#selectedIngredientsList{
+  padding: 0px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+
+}
+.selectedIngredientItem{
+  padding: 0; 
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
-.orderConatiner{
-  position: fixed;
-  right: 300px;
-  top: 0px;
-  
+
+.selectedIngredientItem p,
+.addedExtraIngredient p{
+  display: inline;
+  padding: 0 5px 0 0; 
+  /* line-height: 30px; */
 }
+.selectedIngredientItem button,
+.addedExtraIngredient button{
+  float: right;
+}
+.addedExtraIngredient{
+  padding: 0 0 0 20px;
+  font-size: 14px;
+
+}
+.addedExtraIngredient{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.removeItem{
+  font-size: 12px;
+  cursor: pointer;
+  height: 20px;
+  color: #fff;
+  background-color: #C53730;
+}
+#orderTotal{
+
+}
+
+.addSomethingBtn{
+  visibility: hidden;
+}
+.finishItBtn{
+  background-color:#4A6C6A;
+  /* color:#fff; */
+  font-size: 16px;
+  font-weight: 600;
+  height: 30px;
+  width: 100%;
+}
+.checkout{
+  background-color:#4A6C6A;
+  /* color:#fff; */
+  font-size: 16px;
+  font-weight: 600;
+  height: 30px;
+  width: 100%;
+}
+.addAnotherEntreeButton, .checkoutFinishedEntree{
+  background-color:#4A6C6A;
+  color:#fff;
+  font-size: 16px;
+  font-weight: 600;
+  height: 30px;
+  width: 200px;
+}
+/* .checkoutFinishedEntree{
+  background-color:#4A6C6A;
+
+  font-size: 16px;
+  font-weight: 600;
+  height: 30px;
+  width: 100%;
+} */

@@ -9,7 +9,7 @@ class CheckoutContainer extends React.Component {
     render() {
         console.log(this.props.completedEntrees)
         return (
-            <section>
+            <section id='checkoutContainer'>
                 <Button 
                     className = {'goBack'}
                     clickHandler ={() => this.props.goBackToAddingFood()} 
