@@ -10,11 +10,15 @@ import { getIngredientsAddedToOrder,
         getORderTotal, 
         getOrderTotal,
         getCompletedEntrees} from '../reducers/selectors';
-import {removeSelectedIngredient, removeExtra, finishCurrentEntree, removeCompletedEntree, checkout} from '../actions/actionCreators';
+import {removeSelectedIngredient, 
+        removeExtra, 
+        finishCurrentEntree, 
+        removeCompletedEntree,
+        checkout} from '../actions/actionCreators';
 
 class OrderContainer extends React.Component {
     completedEntreesCheckoutButton() {
-        if(this.props.currentEntreeId !== null){
+        if(this.props.currentEntreeId !== null && this.props.selectedIngredients.length >0){
             this.props.finishCurrentEntree(this.props.currentEntreeId, this.props.entreeTypeName, this.props.selectedIngredients, this.props.entreeTotal),
             this.props.checkout()
                 
@@ -24,7 +28,7 @@ class OrderContainer extends React.Component {
     }
     render() {
         return (
-            <div id='orderConatiner'>
+            <div id='orderConatiner' >
                 <h3> Your Order</h3>
                 <h4>{this.props.entreeTypeName}</h4>
                 <ul id='selectedIngredientsList'>
@@ -57,8 +61,8 @@ class OrderContainer extends React.Component {
                 {<button 
                         onClick={() => this.props.finishCurrentEntree(this.props.currentEntreeId, this.props.entreeTypeName, this.props.selectedIngredients, this.props.entreeTotal)}
                         disabled ={this.props.selectedIngredients < 1}
-                        className ={this.props.selectedIngredients <1 ? 'addSomethingBtn' : 'finishItBtn'}>
-                        {this.props.selectedIngredients < 1 ? 'Add something' : 'Finish it!'}
+                        className ={this.props.selectedIngredients <1 ? 'addSomethingBtn' : 'addEntreeToOrder'}>
+                        {this.props.selectedIngredients < 1 ? '' : 'Add Entree To Order'}
                     </button>
                 }
                 {this.props.completedEntrees.length >= 1 && 
@@ -67,17 +71,15 @@ class OrderContainer extends React.Component {
                         {this.props.completedEntrees.map((entrees, i) =>{
                             return (
                                 <li key={'completedEntree ' + i}>
-                                    <p>{entrees.entree_type} <em>with</em> {entrees.ingredients[0].name}
-                                        <span>
-                                            <Button 
+                                    <div  className='selectedIngredientItem'> 
+                                        <p>{entrees.entree_type} with {entrees.ingredients[0].name}</p>
+                                        <Button 
                                             className = {'removeItem'}
                                             clickHandler = {() =>this.props.removeCompletedEntree(i)} 
                                             title = {'x'}
                                             value = {'remove'}
-                                            />
-                                        </span>
-                                    </p>
-                                    
+                                        />
+                                    </div>
                                 </li>)
                         })}
                         </ul>

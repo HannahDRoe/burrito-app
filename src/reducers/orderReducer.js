@@ -4,7 +4,8 @@ function currentOrderStatus(state, action) {
     switch (action.type) {
         case 'ENTREE_SELECTED':
             return  'entree-started'
-        case 'RESET_ORDER':
+        case 'RESET_CURRENT_ORDER':
+        case 'START_NEW_ORDER':
             return 'entree-not-started'
         case 'FINISH_ENTREE':
             return 'entree-completed'
@@ -16,6 +17,7 @@ function currentOrderStatus(state, action) {
             return 'entree-not-started'
         case 'PLACE_ORDER':
             return 'order-placed'
+
         default:
             return state;
     }
@@ -36,6 +38,8 @@ function completedEntree(state , action){
                 ...state.slice(0, action.entreeIndex),
                 ...state.slice(action.entreeIndex +1)
             ]
+        case 'START_NEW_ORDER':
+            return []
         default:
             return state;    
     }

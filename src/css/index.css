@@ -1,8 +1,7 @@
 body {
   background-color: #F8F2ED;
   font-family: sans-serif;
-  /* color:#141C1C; */
-  /* overflow-x: scroll; */
+  overflow-y: scroll;
   /* width: 100%; */
   margin: 0 auto;
 }
@@ -45,27 +44,27 @@ li{
   justify-content: center;
   margin: 50px;
 }
+
 #ingredientsContainer{
-  /* margin: 0 auto; */
-  flex-grow: 3;
+  display: flex;
+  flex-grow: 1;
 }
 
 #ingredientsContainer h4{
   text-align: center;
 }
+
 button{
   border-radius: 3px;
   border: none;
+  height: 30px;
 
 }
 .resetButton{
-  height: 30px;
   min-width: 125px;
-  position: relative;
-  /* background-color:#273242; */
+  position: absolute;
   background-color: #EE9C49;
-  /* color: #fff; */
-  /* left: 30px; */
+  left: 60px;
  
 }
 
@@ -75,25 +74,28 @@ button{
   background-color:#F0A960;
 
 }
+
 .currentCategory{
   background-color: #C53730;
   color: #fff;
   border-radius: 3px;
+  width: 175px;
 }
+
 #ingredientCategoryNav{
   margin-top: 50px;
-  width: 200px;
   font-size: 18px;
-  /* left: 15%; */
-
 }
+
 #ingredientCategoryNav ul{
   padding: 0;
 }
+
 #ingredientCategoryNav ul li{
   cursor: pointer;
   padding: 10px;
 }
+
 #ingredientListItemsContainer{
   display: flex;
   justify-content: center;
@@ -103,6 +105,7 @@ button{
   max-width: 1000px;
   margin: 0 auto;
 }
+
 .ingredientListItem{
   width: 250px;
   height: 150px;
@@ -110,40 +113,39 @@ button{
   text-align: center;
   font-style: italic;
 }
+
 .ingredientListItem p{
   margin: 0;
 }
+
 .addExtraButton{
   margin: 15px auto;
-  height: 30px;
   background-color:#273242;
-
-  /* background-color: #3B5654; */
   color: #fff;
 }
+
 .addExtraButton:disabled{
   cursor: not-allowed;
-
 }
+
 #finshedEntree{
   display: flex;
   justify-content: center;
   align-content: center;
   padding-top: 100px;
 }
+
 #finshedEntree button{
  margin: 10px;
 }
+
 #orderConatiner{
   width: 250px;
-  height: 100%;
-
-
+  margin-right: 30px;
 }
-#orderContainer h4{
 
-}
-#selectedIngredientsList{
+#selectedIngredientsList,
+#completedEntreeList{
   padding: 0px;
   display: flex;
   justify-content: space-evenly;
@@ -163,10 +165,7 @@ button{
   padding: 0 5px 0 0; 
   /* line-height: 30px; */
 }
-.selectedIngredientItem button,
-.addedExtraIngredient button{
-  float: right;
-}
+
 .addedExtraIngredient{
   padding: 0 0 0 20px;
   font-size: 14px;
@@ -178,6 +177,7 @@ button{
   align-items: center;
 }
 .removeItem{
+  float: right;
   font-size: 12px;
   cursor: pointer;
   height: 20px;
@@ -191,35 +191,85 @@ button{
 .addSomethingBtn{
   visibility: hidden;
 }
-.finishItBtn{
-  background-color:#4A6C6A;
-  /* color:#fff; */
-  font-size: 16px;
-  font-weight: 600;
-  height: 30px;
-  width: 100%;
-}
-.checkout{
-  background-color:#4A6C6A;
-  /* color:#fff; */
-  font-size: 16px;
-  font-weight: 600;
-  height: 30px;
-  width: 100%;
-}
-.addAnotherEntreeButton, .checkoutFinishedEntree{
+.addEntreeToOrder{
   background-color:#4A6C6A;
   color:#fff;
   font-size: 16px;
-  font-weight: 600;
+  /* font-weight: 600; */
+  height: 30px;
+  width: 175px;
+  margin: 0 0 10px 0;
+}
+.checkout{
+  background-color:#4A6C6A;
+  color:#fff;
+  font-size: 18px;
+  /* font-weight: 600; */
+  height: 30px;
+  width: 100%;
+}
+
+.addAnotherEntreeButton, 
+.checkoutFinishedEntree{
+  background-color:#4A6C6A;
+  color:#fff;
+  font-size: 16px;
   height: 30px;
   width: 200px;
 }
-/* .checkoutFinishedEntree{
-  background-color:#4A6C6A;
 
-  font-size: 16px;
-  font-weight: 600;
+#checkoutContainer{
+  position:relative;
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+.placeOrder{
+  background-color: #C53730;
+  color: #fff;
+  width: 120px;
   height: 30px;
-  width: 100%;
-} */
+  font-size: 18px;
+}
+.placeOrder:hover{
+
+}
+.checkoutCompletedEntreeList{
+
+}
+.checkoutCompletedEntree{
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  align-items: center;
+  height: 200px;
+  padding: 0;
+}
+.checkoutCompletedEntree li p{
+  margin: 5px ;
+  /* font-size: 14px; */
+}
+.checkoutCompletedEntree li p:nth-child(2){
+  padding: 0 0 0 25px;
+  font-size: 14px;
+}
+.checkoutAddAnotherEntreeBtn{
+  background-color:#4A6C6A;
+  color:#fff;
+  width: 200px;
+  font-size: 18px;
+}
+
+#thanksForOrder{
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+.startANewOrder{
+  background-color:#4A6C6A;
+  color:#fff;
+  width: 200px;
+  font-size: 18px;
+}
