@@ -1,0 +1,58 @@
+/**********************************/
+/*       Media Queries            */
+/**********************************/
+@media (max-width:  1050px) {
+    #selectIngredientsContainer{
+      margin: 50px 10px;
+    }
+    #orderContainer{
+      margin:0;
+    }
+  }
+  @media (max-width:  750px) {
+    #mainContainer{
+      overflow: hidden;
+    }
+    #selectIngredientsContainer{
+      margin: 0 20px;
+    }
+    #ingredientsContainer{
+      flex-direction: column;
+      justify-content: center;
+    }
+    /* #orderContainer{
+      transform: translateX(175%);
+    } */
+   .hideOrderIngredients{
+      transform: translateX(175%);
+    }
+    #orderContainer h3{
+      transform: rotate(270deg);
+      position: fixed;
+      right: 15px;
+      top: 50px;
+  
+    }
+    .displayOrdeIngredients{
+      transform: translateX(0%)
+    }
+    .displayOrderBtn, .hideOrderBtn{
+      display: block;
+    }
+    .hideOrderBtn img{
+      transform: rotate(180deg);
+    }
+    #selectEntree{
+      width: 100%;
+      margin: 0;
+      flex-basis: 100%;
+    }
+    #ingredientsCategoryNav{
+      position: relative;
+      left: 50%;
+    }
+    .entreeTypes{
+      width: 100%;
+      flex-basis: 100%;
+    }
+  }

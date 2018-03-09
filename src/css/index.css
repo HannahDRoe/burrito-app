@@ -1,26 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 body {
-  background-color: #F8F2ED;
-  font-family: sans-serif;
-  /* overflow-y: scroll; */
-  /* width: 100%; */
+  background-color: #f6f1ed;
+  font-family: 'Roboto', sans-serif; 
+  max-width: 1400px;
   margin: 0 auto;
 }
-
 li{
   list-style: none;
 }
-
 #mainContainer{
   margin: 20px auto;
 }
-
 #selectEntreeContainer{
   display: flex;
   justify-content: center;
 
 }
-
-
 #selectEntreeHeader{
   height: 50px;
   text-align: center;
@@ -33,30 +29,22 @@ li{
   margin-top: 50px;
   flex-basis: 53%;
 }
-
 .entreeTypes{
   width: 33%;
   margin: 20px;
   text-align: center;
 }
-
 #selectIngredientsContainer{
   display: flex;
   justify-content: center;
   margin: 50px;
 }
-
 #ingredientsContainer{
   display: flex;
   flex-grow: 1;
 }
-
-#ingredientsContainer h4{
-  text-align: center;
-}
-
 button{
-  border-radius: 3px;
+  border-radius: 2px;
   border: none;
   height: 30px;
   cursor: pointer;
@@ -65,22 +53,20 @@ button p{
   margin: 0;
 }
 .resetButton{
-  min-width: 125px;
   position: absolute;
-  background-color: #EE9C49;
-  left: 60px;
- 
+  background-color: #f6f1ed;
+  left: 20px;
+  top: 20px;
+  font-size: 16px;
+  width: 125px;
 }
-
 .resetButton:hover{
   cursor: pointer;
-  /* background-color: #313E52; */
-  background-color:#F0A960;
-
+  background-color: #ddd;
+  /* background-color:#90AE9E; */
 }
 .resetButton img{
-
-  width: 10px;
+  width: 12px;
   transform: rotate(90deg);
 }
 .resetButton p{
@@ -88,60 +74,65 @@ button p{
   padding-left: 10px;
 }
 .currentCategory{
-  background-color: #C53730;
-  color: #fff;
-  border-radius: 3px;
+  background-color: #963019;
+  color: #f6f1ed;
   width: 175px;
+  box-shadow: 1px 1px 5px #c7c6c6;
 }
-
 #ingredientCategoryNav{
-  margin-top: 50px;
   font-size: 18px;
+  border-right: 1px solid #ddd;
 }
-
 #ingredientCategoryNav ul{
   padding: 0;
 }
-
 #ingredientCategoryNav ul li{
   cursor: pointer;
   padding: 10px;
 }
-
 #ingredientListItemsContainer{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  align-content: center;
-  padding: 0 30px;
-  margin: 100px auto;
+  margin: 50px auto;
 }
-
 .ingredientListItem{
-  width: 250px;
-  margin: 10px;
+  width: 225px;
+  height: 330px;
+  margin: 10px 5px;
   text-align: center;
-  font-style: italic;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ingredientListItem:hover{
+  box-shadow: 1px 1px 5px #e4e3e3;
 }
 .ingredientItemImg{
-  width: 50%;
-  padding: 10px;
+  width: 100%;
+  height: auto;
 }
 .ingredientListItem p{
-  margin: 0;
+  font-size: 14px;
+  line-height: 1.3;
 }
-
+.ingredientListItem p,
+.ingredientListItem h4{
+  margin: 5px auto ;
+  padding: 5px;
+}
 .addExtraButton{
-  margin: 15px auto;
-  background-color:#273242;
-  color: #fff;
+  margin: 0 auto 10px;
+  background-color:#34141c;
+  color: rgb(238, 238, 238);
 }
 
-.addExtraButton:disabled{
-  background-color:#3C4654;
-  color: #fff;
+.addExtraButton:disabled,
+.addExtraButton:hover{
+  background-color:#482B32;
   cursor: default;
-
+  color: #E7E7ED;
 }
 #finshedEntree{
   display: flex;
@@ -154,7 +145,9 @@ button p{
 }
 #orderContainer{
   width: 200px;
-  margin-right: 10px;
+  margin: 10px;
+  padding: 20px;
+  border-left: 1px solid #ddd;
 }
 #orderContainer h3{
   display: flex;
@@ -162,7 +155,9 @@ button p{
   align-items: center;
   width: inherit;
 }
-.displayOrderBtn, .hideOrderBtn{
+.displayOrderBtn, 
+.hideOrderBtn, 
+.hideAddEntreeToOrder{
   background: none;
   display: none;
 }
@@ -186,14 +181,11 @@ button p{
   justify-content: space-between;
   align-items: center;
 }
-
 .selectedIngredientItem p,
 .addedExtraIngredient p{
   display: inline;
-
-  /* line-height: 30px; */
+  margin: 5px;
 }
-
 .addedExtraIngredient{
   padding: 0 0 0 20px;
   font-size: 14px;
@@ -210,22 +202,18 @@ button p{
   cursor: pointer;
   height: 20px;
   color: #fff;
-  background-color: #C53730;
-}
-.addSomethingBtn{
-  visibility: hidden;
+  background-color: #963019;
+
 }
 .addEntreeToOrder{
-  background-color:#4A6C6A;
+  background-color:#3b4d45;
   color:#fff;
   font-size: 16px;
-  /* font-weight: 600; */
   height: 30px;
-  width: 175px;
   margin: 0 0 10px 0;
 }
 .checkout{
-  background-color:#4A6C6A;
+  background-color:#3b4d45;
   color:#fff;
   font-size: 18px;
   /* font-weight: 600; */
@@ -234,117 +222,65 @@ button p{
 }
 
 .addAnotherEntreeButton, 
-.checkoutFinishedEntree{
-  background-color:#4A6C6A;
+.checkoutFinishedEntree,
+.checkoutAddAnotherEntreeBtn, 
+.startANewOrder{
+  background-color:#3b4d45;
   color:#fff;
-  font-size: 16px;
-  height: 30px;
+  font-size: 18px;
+  height: 50px;
   width: 200px;
 }
-
+.addAnotherEntreeButton:hover, 
+.checkoutFinishedEntree:hover,
+.checkoutAddAnotherEntreeBtn:hover, 
+.startANewOrder:hover{  
+  background-color:#35453E;
+}
+.checkoutAddAnotherEntreeBtn{
+  margin-right: 30px;
+}
 #checkoutContainer{
   position:relative;
   width: 500px;
   margin: 0 auto;
-  text-align: center;
+
 }
-.placeOrder{
-  background-color: #C53730;
+.placeOrderBtn{
+  background-color: #963019;
   color: #fff;
   width: 120px;
-  height: 30px;
+  height: 50px;
   font-size: 18px;
+
 }
-.placeOrder:hover{
+.placeOrderBtn:hover{
+  background-color: #872B16;
 
 }
 .checkoutCompletedEntreeList{
+  display: flex;
+  border-bottom: 1px solid #ddd;
 
 }
 .checkoutCompletedEntree{
   text-align: left;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  /* justify-content: center; */
-  align-items: center;
-  height: 200px;
   padding: 0;
+  margin-left: 50px;
 }
 .checkoutCompletedEntree li p{
   margin: 5px ;
-  /* font-size: 14px; */
+
 }
 .checkoutCompletedEntree li p:nth-child(2){
   padding: 0 0 0 25px;
   font-size: 14px;
 }
-.checkoutAddAnotherEntreeBtn{
-  background-color:#4A6C6A;
-  color:#fff;
-  width: 200px;
-  font-size: 18px;
-}
+
 #thanksForOrder{
   width: 300px;
   margin: 0 auto;
   text-align: center;
 }
-.startANewOrder{
-  background-color:#4A6C6A;
-  color:#fff;
-  width: 200px;
-  font-size: 18px;
-}
 
-/**********************************/
-/*       Media Queries            */
-/**********************************/
 
-@media (max-width:  750px) {
-  #mainContainer{
-    overflow: hidden;
-  }
-  #selectIngredientsContainer{
-    margin: 0 20px;
-  }
-  #ingredientsContainer{
-    flex-direction: column;
-    justify-content: center;
-  }
-  /* #orderContainer{
-    transform: translateX(175%);
-  } */
- .hideOrderIngredients{
-    transform: translateX(175%);
-  }
-  #orderContainer h3{
-    transform: rotate(270deg);
-    position: fixed;
-    right: 15px;
-    top: 50px;
-
-  }
-  .displayOrdeIngredients{
-    transform: translateX(0%)
-  }
-  .displayOrderBtn, .hideOrderBtn{
-    display: block;
-  }
-  .hideOrderBtn img{
-    transform: rotate(180deg);
-  }
-  #selectEntree{
-    width: 100%;
-    margin: 0;
-    flex-basis: 100%;
-  }
-  #ingredientsCategoryNav{
-    position: relative;
-    left: 50%;
-  }
-  .entreeTypes{
-    width: 100%;
-    flex-basis: 100%;
-  }
-}

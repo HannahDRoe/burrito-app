@@ -41,6 +41,7 @@ class Main extends React.Component {
                             className = {'resetButton'}
                             clickHandler = {this.props.resetCurrentOrder} 
                             title = {'Start Over'}
+                            content= {'Start Over'}
                             img ={'https://s3-us-west-2.amazonaws.com/burrito-app/arrow.svg'}
                             imgAlt = {''}
                         />
@@ -54,11 +55,15 @@ class Main extends React.Component {
                             className = {'addAnotherEntreeButton'}
                             clickHandler = {this.props.addAnotherEntree} 
                             title = {'Add Another Entree?'}
+                            content ={'Add Another Entree?'}
+
                         />
                         <Button 
                             className = {'checkoutFinishedEntree'}
                             clickHandler = {this.props.checkout} 
                             title = {'Checkout'}
+                            content ={'Checkout'}
+
                         />
                     </div>
                 }
@@ -74,6 +79,7 @@ class Main extends React.Component {
                             className = {'startANewOrder'}
                             clickHandler = {this.props.resetCurrentOrder} 
                             title = {'Start A New Order'}
+                            content ={'Start A New Order'}
                         />
                     </section>
                 }

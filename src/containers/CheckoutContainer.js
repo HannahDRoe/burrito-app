@@ -10,16 +10,11 @@ class CheckoutContainer extends React.Component {
         console.log(this.props.completedEntrees)
         return (
             <section id='checkoutContainer'>
-                <Button 
-                    className = {'checkoutAddAnotherEntreeBtn'}
-                    clickHandler ={() => this.props.addAnotherEntree()} 
-                    title = {'Add Another Entree'}
-                />
-                <h3>Order</h3>
+                <h1>Order</h1>
                 {this.props.completedEntrees.map((entrees, i) =>{
                     return( 
                         <div className='checkoutCompletedEntreeList' key={'checkout-completed-entree-'+ i}>
-                            <h4>{entrees.entree_type} with</h4>
+                            <h4>{entrees.entree_type}</h4>
                             <ul className='checkoutCompletedEntree'>
                                 {entrees.ingredients.map((ingredients) =>{
                                     return( 
@@ -33,12 +28,18 @@ class CheckoutContainer extends React.Component {
                         </div>
                     )
                 })}
-                <h2>${this.props.orderTotal.toFixed(2)}</h2>
+                <h2>Total: ${this.props.orderTotal.toFixed(2)}</h2>
                 <Button 
-                    className = {'placeOrder'}
+                    className = {'checkoutAddAnotherEntreeBtn'}
+                    clickHandler ={() => this.props.addAnotherEntree()} 
+                    title = {'Add Another Entree'}
+                    content ={'Add Another Entree'}
+                />
+                <Button 
+                    className = {'placeOrderBtn'}
                     clickHandler = {this.props.placeOrder} 
                     title = {'Place Order'}
-                    value={'Place Order'}
+                    content={'Place Order'}
                 />
             </section>
         );
