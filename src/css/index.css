@@ -34,6 +34,9 @@ li{
   margin: 20px;
   text-align: center;
 }
+.entreeTypes img{
+  width: 100px;
+}
 #selectIngredientsContainer{
   display: flex;
   justify-content: center;

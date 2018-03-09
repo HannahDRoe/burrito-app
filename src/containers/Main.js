@@ -28,6 +28,8 @@ class Main extends React.Component {
                                                 description={entrees.description} 
                                                 id={entrees.id} 
                                                 onClick ={() => this.props.selectEntree(entrees.id)}
+                                                imgSrc ={entrees.img_src}
+                                                imgAlt ={entrees.name}
                                             />
                                     })
                                 }

@@ -2,10 +2,11 @@ import React from 'react';
 
 
 const SelectEntreeItem = (props) =>{
-    let {className, entree, id, description, onClick} = props;
+    let {className, entree, id, description, onClick, imgAlt, imgSrc} = props;
 
     return(
-        <div className={className} value={id} onClick={onClick} >
+        <div className={className}  onClick={onClick} title={entree}>
+            <img src={imgSrc} alt ={imgAlt}  title={entree}/>
             <h4>{entree}</h4>
             <p> {description} </p>
         </div>
