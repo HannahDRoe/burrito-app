@@ -17,6 +17,13 @@ import {removeSelectedIngredient,
         checkout} from '../actions/actionCreators';
 
 class OrderContainer extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            displayOrder: true
+        }
+    
+    }
     completedEntreesCheckoutButton() {
         if(this.props.currentEntreeId !== null && this.props.selectedIngredients.length >0){
             this.props.finishCurrentEntree(this.props.currentEntreeId, this.props.entreeTypeName, this.props.selectedIngredients, this.props.entreeTotal),
@@ -26,10 +33,22 @@ class OrderContainer extends React.Component {
             return this.props.checkout()
         }
     }
+    toggleDisplayOrder() {
+        this.setState({
+            displayOrder: !this.state.displayOrder
+        })
+    }
     render() {
         return (
-            <div id='orderConatiner' >
-                <h3> Your Order</h3>
+            <div id='orderContainer'  className={this.state.displayOrder ? 'hideOrderIngredients' : 'displayOrdeIngredients'}>
+                <h3 onClick = {() => this.toggleDisplayOrder()}>Your Order
+                    <Button
+                        className ={this.state.displayOrder ? 'displayOrderBtn' : 'hideOrderBtn'}
+                        clickHandler = {() => this.toggleDisplayOrder()}
+                        img ={'https://s3-us-west-2.amazonaws.com/burrito-app/arrow.svg'}
+                        imgAlt = {''}                    
+                    />
+                </h3>
                 <h4>{this.props.entreeTypeName}</h4>
                 <ul id='selectedIngredientsList'>
                     {this.props.selectedIngredients.map((ingredient, i) =>{
@@ -49,7 +68,7 @@ class OrderContainer extends React.Component {
                                         <Button 
                                                 className = {'removeItem'}
                                                 clickHandler = {() =>this.props.removeExtra(i)} 
-                                                title = {'x'}
+                                                title = {'X'}
                                                 value = {'remove'}
                                             />
                                     </div>
@@ -57,12 +76,12 @@ class OrderContainer extends React.Component {
                             </li>
                     })}
                 </ul>
-                <h2  className='orderTotal'>{this.props.entreeTotal > 0 ? '$' + (this.props.entreeTotal).toFixed(2) : ''}</h2>
+                <h2  className='orderTotal'>{this.props.entreeTotal > 0 ? '$' + (this.props.entreeTotal).toFixed(2) : null}</h2>
                 {<button 
                         onClick={() => this.props.finishCurrentEntree(this.props.currentEntreeId, this.props.entreeTypeName, this.props.selectedIngredients, this.props.entreeTotal)}
                         disabled ={this.props.selectedIngredients < 1}
                         className ={this.props.selectedIngredients <1 ? 'addSomethingBtn' : 'addEntreeToOrder'}>
-                        {this.props.selectedIngredients < 1 ? '' : 'Add Entree To Order'}
+                        {this.props.selectedIngredients < 1 ? null : 'Add Entree To Order'}
                     </button>
                 }
                 {this.props.completedEntrees.length >= 1 && 
@@ -83,7 +102,7 @@ class OrderContainer extends React.Component {
                                 </li>)
                         })}
                         </ul>
-                        <h2 className='orderTotal'>${(this.props.orderTotal).toFixed(2)}</h2>
+                        <h2 className='orderTotal'>Total: ${(this.props.orderTotal).toFixed(2)}</h2>
                         <Button 
                             className = {'checkout'}
                             clickHandler = {() => this.completedEntreesCheckoutButton()} 

@@ -17,21 +17,22 @@ class Main extends React.Component {
                 {this.props.appData  && <h1 id='loading'>Loading...</h1>}
                 {this.props.orderStatus === 'entree-not-started' && this.props.entreeTypes && 
                     <section id='selectEntreeContainer'>
-                        <h3>Choose an Entree</h3>
-                        <div id='selectEntree'>
-                            {this.props.entreeTypes.map(entrees => {
-                                return <SelectEntreeItem 
-                                            className={'entreeTypes'}
-                                            key={this.props.orderId+ '-'+ entrees.id}
-                                            entree={entrees.name} 
-                                            description={entrees.description} 
-                                            id={entrees.id} 
-                                            onClick ={() => this.props.selectEntree(entrees.id)}
-                                        />
-                                })
-                            }
+                        <div> 
+                            <h3 id='selectEntreeHeader'>Choose an Entree</h3>
+                            <div id='selectEntree'>
+                                {this.props.entreeTypes.map(entrees => {
+                                    return <SelectEntreeItem 
+                                                className={'entreeTypes'}
+                                                key={this.props.orderId+ '-'+ entrees.id}
+                                                entree={entrees.name} 
+                                                description={entrees.description} 
+                                                id={entrees.id} 
+                                                onClick ={() => this.props.selectEntree(entrees.id)}
+                                            />
+                                    })
+                                }
+                            </div>
                         </div>
-                        <OrderContainer/>
                     </section>
                 }
                 {this.props.orderStatus === 'entree-started'  &&
@@ -39,7 +40,9 @@ class Main extends React.Component {
                         <Button 
                             className = {'resetButton'}
                             clickHandler = {this.props.resetCurrentOrder} 
-                            title = {'< Start Over'}
+                            title = {'Start Over'}
+                            img ={'https://s3-us-west-2.amazonaws.com/burrito-app/arrow.svg'}
+                            imgAlt = {''}
                         />
                         <IngredientsContainer />
                         <OrderContainer/>

@@ -5,7 +5,11 @@ const IngredientListItem = (props) =>{
     return (     
         <div className= {props.className}>
             <div onClick={props.listItemOnClick}>
-                {/* <img src={props.img_src}  alt = {props.name}/> */}
+                <img 
+                    className={'ingredientItemImg'} 
+                    src={props.imgSrc} 
+                    alt = {props.name}
+                />
                 <h4>{props.name} {props.price ? '$'+ props.price : ''}</h4>
                 <p>{props.description}</p>
             </div>

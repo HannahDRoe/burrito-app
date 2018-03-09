@@ -1,7 +1,7 @@
 body {
   background-color: #F8F2ED;
   font-family: sans-serif;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   /* width: 100%; */
   margin: 0 auto;
 }
@@ -20,11 +20,11 @@ li{
 
 }
 
-#selectEntreeContainer > h3{
+
+#selectEntreeHeader{
   height: 50px;
   text-align: center;
 }
-
 #selectEntree{
   display: flex;
   flex-wrap: wrap;
@@ -35,8 +35,9 @@ li{
 }
 
 .entreeTypes{
-  max-width: 400px;
+  width: 33%;
   margin: 20px;
+  text-align: center;
 }
 
 #selectIngredientsContainer{
@@ -58,7 +59,10 @@ button{
   border-radius: 3px;
   border: none;
   height: 30px;
-
+  cursor: pointer;
+}
+button p{
+  margin: 0;
 }
 .resetButton{
   min-width: 125px;
@@ -74,7 +78,15 @@ button{
   background-color:#F0A960;
 
 }
+.resetButton img{
 
+  width: 10px;
+  transform: rotate(90deg);
+}
+.resetButton p{
+  display: inline;
+  padding-left: 10px;
+}
 .currentCategory{
   background-color: #C53730;
   color: #fff;
@@ -102,18 +114,19 @@ button{
   flex-wrap: wrap;
   align-content: center;
   padding: 0 30px;
-  max-width: 1000px;
-  margin: 0 auto;
+  margin: 100px auto;
 }
 
 .ingredientListItem{
   width: 250px;
-  height: 150px;
   margin: 10px;
   text-align: center;
   font-style: italic;
 }
-
+.ingredientItemImg{
+  width: 50%;
+  padding: 10px;
+}
 .ingredientListItem p{
   margin: 0;
 }
@@ -125,25 +138,40 @@ button{
 }
 
 .addExtraButton:disabled{
-  cursor: not-allowed;
-}
+  background-color:#3C4654;
+  color: #fff;
+  cursor: default;
 
+}
 #finshedEntree{
   display: flex;
   justify-content: center;
   align-content: center;
   padding-top: 100px;
 }
-
 #finshedEntree button{
  margin: 10px;
 }
-
-#orderConatiner{
-  width: 250px;
-  margin-right: 30px;
+#orderContainer{
+  width: 200px;
+  margin-right: 10px;
 }
-
+#orderContainer h3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: inherit;
+}
+.displayOrderBtn, .hideOrderBtn{
+  background: none;
+  display: none;
+}
+.displayOrderBtn img,
+.hideOrderBtn img{
+  width: 20px;
+  padding: 5px;
+  /* margin: 10px auto 0; */
+}
 #selectedIngredientsList,
 #completedEntreeList{
   padding: 0px;
@@ -162,7 +190,7 @@ button{
 .selectedIngredientItem p,
 .addedExtraIngredient p{
   display: inline;
-  padding: 0 5px 0 0; 
+
   /* line-height: 30px; */
 }
 
@@ -184,10 +212,6 @@ button{
   color: #fff;
   background-color: #C53730;
 }
-#orderTotal{
-
-}
-
 .addSomethingBtn{
   visibility: hidden;
 }
@@ -261,7 +285,6 @@ button{
   width: 200px;
   font-size: 18px;
 }
-
 #thanksForOrder{
   width: 300px;
   margin: 0 auto;
@@ -272,4 +295,56 @@ button{
   color:#fff;
   width: 200px;
   font-size: 18px;
+}
+
+/**********************************/
+/*       Media Queries            */
+/**********************************/
+
+@media (max-width:  750px) {
+  #mainContainer{
+    overflow: hidden;
+  }
+  #selectIngredientsContainer{
+    margin: 0 20px;
+  }
+  #ingredientsContainer{
+    flex-direction: column;
+    justify-content: center;
+  }
+  /* #orderContainer{
+    transform: translateX(175%);
+  } */
+ .hideOrderIngredients{
+    transform: translateX(175%);
+  }
+  #orderContainer h3{
+    transform: rotate(270deg);
+    position: fixed;
+    right: 15px;
+    top: 50px;
+
+  }
+  .displayOrdeIngredients{
+    transform: translateX(0%)
+  }
+  .displayOrderBtn, .hideOrderBtn{
+    display: block;
+  }
+  .hideOrderBtn img{
+    transform: rotate(180deg);
+  }
+  #selectEntree{
+    width: 100%;
+    margin: 0;
+    flex-basis: 100%;
+  }
+  #ingredientsCategoryNav{
+    position: relative;
+    left: 50%;
+  }
+  .entreeTypes{
+    width: 100%;
+    flex-basis: 100%;
+  }
 }
