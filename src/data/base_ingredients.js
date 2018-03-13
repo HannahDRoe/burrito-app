@@ -3,7 +3,7 @@ export const base_ingredients = [
         id: 'chicken',
         name: 'Chicken',
         description: 'Marinated overnight and gilled fresh throughout the day',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 675,
         additional_price_for_extra: 250
@@ -12,7 +12,7 @@ export const base_ingredients = [
         id: 'steak',
         name: 'Steak',
         description: 'Marinated overnight in our sipcy chipotle sauce and gilled to a perfect medium rare',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 775,
         additional_price_for_extra: 350
@@ -21,7 +21,7 @@ export const base_ingredients = [
         id: 'carnitas',
         name: 'Carnitas',
         description: 'Pork that is braised for hours in our special spice blend and shredded',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 700,
         additional_price_for_extra: 250
@@ -30,7 +30,7 @@ export const base_ingredients = [
         id: 'barbacoa',
         name: 'Barbacoa',
         description: 'Beef that is braised for hours in our special spice blend and shredded',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 750,
         additional_price_for_extra: 325
@@ -39,7 +39,7 @@ export const base_ingredients = [
         id: 'sofritas',
         name: 'Sofritas',
         description: 'Organic tofu that is braised for hours in our special spice blend and shredded',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 650,
         additional_price_for_extra: 250
@@ -48,7 +48,7 @@ export const base_ingredients = [
         id: 'veggies',
         name: 'Veggies',
         description: 'Our guacamole and fajita veggies ',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 650,
         additional_price_for_extra: 250
@@ -57,7 +57,7 @@ export const base_ingredients = [
         id: 'flour-tortilla',
         name: 'Flour Tortilla',
         description: 'a fluffy disk of goodness',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: false,
         price: 0,
         additional_price_for_extra: 0
@@ -66,7 +66,7 @@ export const base_ingredients = [
         id: 'whole-wheat-tortilla',
         name: 'Whole Wheat Tortilla',
         description: 'a realtively healthier tortilla option but still good',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: false,
         price: 0,
         additional_price_for_extra: 0
@@ -75,7 +75,7 @@ export const base_ingredients = [
         id: 'small-flour-tortilla',
         name: 'Soft Flour Tortilla' ,
         description: 'small and great for tacos',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: false,
         price: 0,
         additional_price_for_extra: 0
@@ -84,7 +84,7 @@ export const base_ingredients = [
         id: 'corn-tortilla',
         name: 'Corn Tortilla' ,
         description: 'small tortillas for great authentic tacos',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: false,
         price: 0,
         additional_price_for_extra: 0
@@ -93,7 +93,7 @@ export const base_ingredients = [
         id: 'black-beans',
         name: 'Black Beans',
         description: 'delicious beans',
-        img_src: 'https://www.kitchentreaty.com/wp-content/uploads/2015/09/supremely-delicious-black-beans-from-scratchsq-660x430.jpg',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 0,
         additional_price_for_extra: 0
@@ -102,7 +102,7 @@ export const base_ingredients = [
         id: 'pinto-beans',
         name: 'Pinto Beans',
         description: 'pinto beand also a great option',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 0,
         additional_price_for_extra: 0
@@ -111,7 +111,7 @@ export const base_ingredients = [
         id: 'no-beans',
         name: 'No Beans Please',
         description: null,
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: false,
         price: 0,
         additional_price_for_extra: 0
@@ -120,7 +120,7 @@ export const base_ingredients = [
         id: 'cilantro-rice',
         name: 'Cilantro Rice',
         description: 'Rice! Classic!',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 0,
         additional_price_for_extra: 0
@@ -129,7 +129,7 @@ export const base_ingredients = [
         id: 'brown-rice',
         name: 'Brown Rice',
         description: 'Rice! Classic!',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 0,
         additional_price_for_extra: 0
@@ -138,7 +138,7 @@ export const base_ingredients = [
         id: 'no-rice',
         name: 'No Rice Please',
         description: null,
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: false,
         price: 0,
         additional_price_for_extra: 0
@@ -147,7 +147,7 @@ export const base_ingredients = [
         id: 'sour-cream',
         name: 'Sour Cream',
         description: 'a nice little somethin',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 0,
         additional_price_for_extra: 0
@@ -156,7 +156,7 @@ export const base_ingredients = [
         id: 'cheese',
         name: 'Cheese',
         description: 'Cheeeese!',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 0,
         additional_price_for_extra: 0
@@ -165,7 +165,7 @@ export const base_ingredients = [
         id: 'fajita-veggies',
         name: 'Fajita Veggies',
         description: 'Veggies rock',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 0,
         additional_price_for_extra: 0
@@ -174,7 +174,7 @@ export const base_ingredients = [
         id: 'romaine-lettuce',
         name: 'Romaine Lettuce',
         description: 'Crisp Romaine Lettuce',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 0,
         additional_price_for_extra: 0
@@ -185,7 +185,7 @@ export const base_ingredients = [
         id: 'guacamole',
         name: 'Guacamole',
         description: 'Guacamole',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 200,
         additional_price_for_extra: 100
@@ -194,7 +194,7 @@ export const base_ingredients = [
         id: 'queso',
         name: 'Queso',
         description: 'Lovely golden melty cheese. Is it obvious I have no copy editor?',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 150,
         additional_price_for_extra: 100
@@ -203,7 +203,7 @@ export const base_ingredients = [
         id: 'fresh-tomato',
         name: 'Fresh Tomato Salsa',
         description: 'Mild',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 0,
         additional_price_for_extra: 0
@@ -212,7 +212,7 @@ export const base_ingredients = [
         id: 'roasted-chili-corn',
         name: 'Roasted Chili Corn Salsa',
         description: 'Medium',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 0,
         additional_price_for_extra: 0
@@ -221,7 +221,7 @@ export const base_ingredients = [
         id: 'tomatillo-green-chili',
         name: 'Tomatillo-Green Chili Salsa',
         description: 'Medium Hot',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 0,
         additional_price_for_extra: 0
@@ -230,7 +230,7 @@ export const base_ingredients = [
         id: 'tomatillo-red-chili',
         name: 'Tomatillo-Red Chili Salsa',
         description: 'Hot',
-        img_src: '...',
+        img_src: 'https://s3-us-west-2.amazonaws.com/burrito-app/corgi-placeholder.jpg',
         can_add_extra: true,
         price: 0,
         additional_price_for_extra: 0

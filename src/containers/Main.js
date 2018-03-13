@@ -7,53 +7,65 @@ import OrderContainer  from './OrderContainer';
 import CheckoutContainer from './CheckoutContainer';
 import Button  from '../components/Button';
 import { getEntreeTypes, getOrderStatus, getOrderId, getDataStatus } from '../reducers/selectors'
-import {selectEntree, resetOrder, addAnotherEntree, checkout} from '../actions/actionCreators';
+import {selectEntree, resetCurrentOrder, addAnotherEntree, checkout} from '../actions/actionCreators';
 
 class Main extends React.Component {
 
     render() {
         return (
-            
-            <main className='mainContainer'>
-                {this.props.appData  && <h1>Loading...</h1>}
+            <main id='mainContainer'>
+                {this.props.appData  && <h1 id='loading'>Loading...</h1>}
                 {this.props.orderStatus === 'entree-not-started' && this.props.entreeTypes && 
-                    <section>
-                        <h3>Choose an Entree</h3>
-                        {this.props.entreeTypes.map(entrees => {
-                            return <SelectEntreeItem 
-                                        key={this.props.orderId+ '-'+ entrees.id}
-                                        entree={entrees.name} 
-                                        description={entrees.description} 
-                                        id={entrees.id} 
-                                        onClick ={() => this.props.selectEntree(entrees.id)}
-                                    />
-                            })
-                        }
-                        <OrderContainer/>
+                    <section id='selectEntreeContainer'>
+                        <div> 
+                            <h3 id='selectEntreeHeader'>Choose an Entree</h3>
+                            <div id='selectEntree'>
+                                {this.props.entreeTypes.map(entrees => {
+                                    return <SelectEntreeItem 
+                                                className={'entreeTypes'}
+                                                key={this.props.orderId+ '-'+ entrees.id}
+                                                entree={entrees.name} 
+                                                description={entrees.description} 
+                                                id={entrees.id} 
+                                                onClick ={() => this.props.selectEntree(entrees.id)}
+                                                imgSrc ={entrees.img_src}
+                                                imgAlt ={entrees.name}
+                                            />
+                                    })
+                                }
+                            </div>
+                        </div>
                     </section>
                 }
                 {this.props.orderStatus === 'entree-started'  &&
-                    <div>
+                    <section id='selectIngredientsContainer' >
                         <Button 
                             className = {'resetButton'}
-                            clickHandler = {this.props.resetOrder} 
-                            title = {'< Start Over'}
+                            clickHandler = {this.props.resetCurrentOrder} 
+                            title = {'Start Over'}
+                            content= {'Start Over'}
+                            img ={'https://s3-us-west-2.amazonaws.com/burrito-app/arrow.svg'}
+                            imgAlt = {''}
                         />
                         <IngredientsContainer />
                         <OrderContainer/>
-                    </div>
+                    </section>
                 }
                 {this.props.orderStatus === 'entree-completed'  &&
-                    <div>
+                    <div id='finshedEntree'>
                         <Button 
                             className = {'addAnotherEntreeButton'}
                             clickHandler = {this.props.addAnotherEntree} 
                             title = {'Add Another Entree?'}
+                            content ={'Add Another Entree?'}
+
                         />
                         <Button 
-                            className = {'checkout'}
+                            className = {'checkoutFinishedEntree'}
                             clickHandler = {this.props.checkout} 
                             title = {'Checkout'}
+                            content ={'Checkout'}
+
                         />
                     </div>
                 }
@@ -63,9 +75,15 @@ class Main extends React.Component {
                     </div>
                 }
                 {this.props.orderStatus === 'order-placed' &&
-                    <div>
-                        Thank you for your order!
-                    </div>
+                    <section id='thanksForOrder' >
+                       <h1> Thank you for your order!</h1>
+                        <Button 
+                            className = {'startANewOrder'}
+                            clickHandler = {this.props.resetCurrentOrder} 
+                            title = {'Start A New Order'}
+                            content ={'Start A New Order'}
+                        />
+                    </section>
                 }
 
             </main>
@@ -83,7 +101,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) =>{
-    return bindActionCreators({selectEntree, resetOrder, addAnotherEntree, checkout} , dispatch)
+    return bindActionCreators({selectEntree, resetCurrentOrder, addAnotherEntree, checkout} , dispatch)
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Main);

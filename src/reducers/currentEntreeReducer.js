@@ -50,7 +50,7 @@ function entreeSelected (state, action) {
                         
                     ]
             }
-    case 'RESET_ORDER':
+    case 'RESET_CURRENT_ORDER':
     case 'ADD_ANOTHER_ENTREE' :
     case 'FINISH_ENTREE':
             return {    id: null,

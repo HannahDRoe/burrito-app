@@ -2,41 +2,44 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {getCompletedEntrees, getOrderTotal} from '../reducers/selectors';
-import {goBackToAddingFood, placeOrder} from '../actions/actionCreators';
+import {addAnotherEntree, placeOrder} from '../actions/actionCreators';
 import Button from '../components/Button';
 
 class CheckoutContainer extends React.Component {
     render() {
-        console.log(this.props.completedEntrees)
         return (
-            <section>
+            <section id='checkoutContainer'>
+                <h1>Order</h1>
+                <h2>Total: ${this.props.orderTotal.toFixed(2)}</h2>
                 <Button 
-                    className = {'goBack'}
-                    clickHandler ={() => this.props.goBackToAddingFood()} 
-                    title = {'Go back to adding stuff'}
+                    className = {'checkoutAddAnotherEntreeBtn'}
+                    clickHandler ={() => this.props.addAnotherEntree()} 
+                    title = {'Add Another Entree'}
+                    content ={'Add Another Entree'}
                 />
-                <h3>Order</h3>
+                <Button 
+                    className = {'placeOrderBtn'}
+                    clickHandler = {this.props.placeOrder} 
+                    title = {'Place Order'}
+                    content={'Place Order'}
+                />
                 {this.props.completedEntrees.map((entrees, i) =>{
                     return( 
-                        <div key={'checkout-completed-entree-'+ i}>
-                            <p>{entrees.entree_type}</p>
-                            {entrees.ingredients.map((ingredients) =>{
-                                return( 
-                                    <div> 
-                                        <p>{ingredients.name}</p>
-                                        {ingredients.addExtra ? <p>add extra{ingredients.name}</p> : null}
-                                    </div>
-                                )
-                            })}
+                        <div className='checkoutCompletedEntreeList' key={'checkout-completed-entreeList-'+ i}>
+                            <h4>{entrees.entree_type}</h4>
+                            <ul className='checkoutCompletedEntree'>
+                                {entrees.ingredients.map((ingredients) =>{
+                                    return( 
+                                        <li key ={'checkout-entree-item-'+ingredients.name}> 
+                                            <p>{ingredients.name}</p>
+                                            {ingredients.addExtra ? <p>add extra{ingredients.name}</p> : null}
+                                        </li>
+                                    )
+                                })}
+                            </ul>
                         </div>
                     )
                 })}
-                <p>${this.props.orderTotal.toFixed(2)}</p>
-                <Button 
-                    className = {'placeOrder'}
-                    clickHandler = {this.props.placeOrder} 
-                    title = {'Place Order'}
-                />
             </section>
         );
     }
@@ -52,7 +55,7 @@ function mapStateToProps(state) {
 
 
 const mapDispatchToProps = (dispatch) =>{
-    return bindActionCreators({goBackToAddingFood, placeOrder} , dispatch)
+    return bindActionCreators({addAnotherEntree, placeOrder} , dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckoutContainer);

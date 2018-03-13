@@ -72,7 +72,7 @@ export const ingredient_categories = [
             'tomatillo-red-chili'
         ],
         min_required: 0,
-        max_limit: 7
+        max_limit: 10
     }
 ]
 

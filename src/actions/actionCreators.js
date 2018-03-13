@@ -35,9 +35,9 @@ export const removeExtra = (itemIndex) => {
         itemIndex
     }
 }
-export const resetOrder = () => {
+export const resetCurrentOrder = () => {
     return{
-        type: 'RESET_ORDER'
+        type: 'RESET_CURRENT_ORDER'
     }
 }
 export const removeSelectedIngredient = (ingredientId) =>{
@@ -83,9 +83,9 @@ export const placeOrder = () =>{
         type: 'PLACE_ORDER'
     }
 }
-export const goBackToAddingFood = () =>{
-    return {
-        type: 'GO_BACK'
+export const startNewOrder =() => {
+    return{
+        type: 'START_NEW_ORDER'
     }
 }
 export const removeCompletedEntree =(entreeIndex) =>{

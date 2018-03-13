@@ -1,0 +1,206 @@
+/**********************************/
+/*       Media Queries            */
+/**********************************/
+@media (max-width:  1050px) {
+    #selectIngredientsContainer{
+      margin: 50px 10px;
+    }
+    #orderContainer{
+      margin:0;
+    }
+}
+@media (max-width:  750px) {
+    #mainContainer{
+        overflow: hidden;
+    }
+    #selectEntree{
+        width: 100%;
+        margin: 0;
+        flex-basis: 100%;
+    }
+    #selectEntreeHeader{
+        font-size: 24px;
+    }
+    .entreeTypes h4{
+        margin: 10px auto;
+        font-size: 18px;
+    }
+
+    #ingredientsContainer{
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #ingredientCategoryNav{
+        position: relative;
+        border-right: none;
+        width: 50%;
+        margin-right: 10px;
+    }
+    #ingredientListItemsContainer{
+        margin: 0 auto;
+        width: 100%;
+    }
+    .ingredientListItem{
+        width: 100%;
+        height: 100px;
+        margin: 5px 25px 5px 0px;
+        align-items: center;
+        flex-direction: row;
+    }
+    .ingredientListItem:hover{
+        box-shadow: none;
+    }
+    .ingredientItemImgTextContainer{
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+    }
+    .ingredientItemText{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 3;
+    }
+    .ingredientItemImg{
+        width: 125px;
+        object-fit: cover;
+    }
+    .ingredientListItem p{
+        font-size: 14px;
+        line-height: 1;
+        width: 50%;
+    }
+    .ingredientListItem p,
+    .ingredientListItem h4{
+        margin: 0 auto ;
+        padding: 5px;
+    }
+    .addExtraButton{
+        flex-grow: 2;
+        padding: 5px;
+        margin: 5px auto;
+        height: 100%;
+    }
+    #orderContainer{
+        margin: 0;
+        width: 0;
+        padding: 0;
+        border-left: none;
+    }
+    #orderContainer h3{
+        width: 150px;
+        margin: 0px;
+        background-color: #f6f1ed;
+        border-right: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+        border-top:  1px solid #ddd;
+        cursor: pointer;
+    }
+    .displayOrderBtn{
+        transform: translateX(-80px) rotate(270deg);
+        position: fixed;
+        width: 150px;
+        margin: 0px;
+        top: 75px;
+    }
+    .hideOrderBtn{
+        width: 150px;
+        margin: 0px;
+        top: 75px;
+        position: fixed;
+        transform: translateX(-390px) rotate(270deg);
+        z-index: 9999;
+    }
+    .displayOrderBtn button,
+    .hideOrderBtn button{
+        display: block;
+    }
+    .displayOrderBtn button img{
+        transform: rotate(180deg);
+    }
+    .hideOrderIngredients{
+        transform: translateX(200px);
+        visibility: hidden;
+        position: fixed;
+
+    }
+    .displayOrderIngredients{
+        width: 85%;
+        transform: translateX(-300px);
+        position: fixed;
+        background-color: #f6f1ed;
+        border-left: 1px solid #ddd;
+        padding: 10px;
+        top:0px;
+        height: 97%;
+        overflow-x: scroll;
+    }
+    #selectedIngredientsList{
+        width: 225px;
+    }
+    .checkout{
+        width: 225px;
+    }
+    .checkoutCompletedEntreeList{
+        border-top: 1px solid #ddd;
+    }
+
+}
+@media  (max-width:  500px) {
+
+    .ingredientListItem{
+        height: 105px;
+    }
+    .ingredientItemImg {
+      width: 90px;
+      height: 100%;
+    }
+    .ingredientListItem p{
+        width: 65%;
+        padding: 0px;
+    }
+    #checkoutContainer{
+        margin: 20px;
+    }
+    .checkoutAddAnotherEntreeBtn{
+        margin-right:0px;
+        width: 75%;
+    }
+    #checkoutContainer{
+        width: 75%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .placeOrderBtn{
+        width: 75%;
+        display: block;
+        margin: 20px auto;
+    }
+}
+@media  (max-width:  400px) {
+    #selectIngredientsContainer{
+        margin: 50px 10px 50px 0px;
+    }
+    #ingredientCategoryNav{
+        width: 100%;
+    }
+    .ingredientListItem{
+        height: 110px;
+        margin: 5px 25px 5px 0px;
+    }
+    .ingredientItemImg {
+       width: 75px;
+     }
+     .addExtraButton{
+        margin: 5px auto;
+        height: 100%;
+        width: 50px;
+    }
+    .displayOrderIngredients{
+        transform: translateX(-250px);
+    }
+    .hideOrderBtn{
+        transform: translateX(-340px) rotate(270deg);
+    }
+}
