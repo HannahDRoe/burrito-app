@@ -40,77 +40,80 @@ class OrderContainer extends React.Component {
     }
     render() {
         return (
-            <div id='orderContainer'  className={this.state.displayOrder ? 'hideOrderIngredients' : 'displayOrdeIngredients'}>
-                <h3 onClick = {() => this.toggleDisplayOrder()}>Your Order
+            <div id='orderContainer' >
+                <h3 onClick = {() => this.toggleDisplayOrder()} className ={this.state.displayOrder ? 'displayOrderBtn' : 'hideOrderBtn'}>Your Order
                     <Button
-                        className ={this.state.displayOrder ? 'displayOrderBtn' : 'hideOrderBtn'}
+                        
                         clickHandler = {() => this.toggleDisplayOrder()}
                         img ={'https://s3-us-west-2.amazonaws.com/burrito-app/arrow.svg'}
                         imgAlt = {''}                    
                     />
                 </h3>
-                <h4>{this.props.entreeTypeName}</h4>
-                <ul id='selectedIngredientsList'>
-                    {this.props.selectedIngredients.map((ingredient, i) =>{
-                        return <li key={this.props.orderId +'-ocsi-'+ingredient.id}>
-                                <div className='selectedIngredientItem'>
-                                    <p>{ingredient.name}</p>
-                                    <Button 
-                                        className = {'removeItem'}
-                                        clickHandler = {() =>this.props.removeSelectedIngredient(i)} 
-                                        title = {'Remove'}
-                                        content = {'X'}
-                                    />
-                                </div>
-                                {ingredient.addExtra &&
-                                    <div className='addedExtraIngredient'>
-                                        <p>extra {ingredient.name}</p>
+                <div className={this.state.displayOrder ? 'hideOrderIngredients' : 'displayOrderIngredients'}>
+                    <h4>{this.props.entreeTypeName}</h4>
+                    <ul id='selectedIngredientsList'>
+                        {this.props.selectedIngredients.map((ingredient, i) =>{
+                            return <li key={this.props.orderId +'-ocsi-'+ingredient.id}>
+                                    <div className='selectedIngredientItem'>
+                                        <p>{ingredient.name}</p>
                                         <Button 
                                             className = {'removeItem'}
-                                            clickHandler = {() =>this.props.removeExtra(i)} 
+                                            clickHandler = {() =>this.props.removeSelectedIngredient(i)} 
                                             title = {'Remove'}
                                             content = {'X'}
                                         />
                                     </div>
-                                   }
-                            </li>
-                    })}
-                </ul>
-                <h4  className='orderTotal'>{this.props.entreeTotal > 0 ? '$' + (this.props.entreeTotal).toFixed(2) : null}</h4>
-                {<button 
-                        onClick={() => this.props.finishCurrentEntree(this.props.currentEntreeId, this.props.entreeTypeName, this.props.selectedIngredients, this.props.entreeTotal)}
-                        disabled ={this.props.selectedIngredients < 1}
-                        className ={this.props.selectedIngredients <1 ? 'hideAddEntreeToOrder' : 'addEntreeToOrder'}>
-                        {this.props.selectedIngredients < 1 ? null : 'Add To Order'}
-                    </button>
-                }
-                {this.props.completedEntrees.length >= 1 && 
-                    <div>
-                        <ul id='completedEntreeList'>
-                        {this.props.completedEntrees.map((entrees, i) =>{
-                            return (
-                                <li key={'completedEntree ' + i}>
-                                    <div  className='selectedIngredientItem'> 
-                                        <p>{entrees.entree_type} with {entrees.ingredients[0].name}</p>
-                                        <Button 
-                                            className = {'removeItem'}
-                                            clickHandler = {() =>this.props.removeCompletedEntree(i)} 
-                                            title = {'Remove'}
-                                            content = {'X'}
-                                        />
-                                    </div>
-                                </li>)
+                                    {ingredient.addExtra &&
+                                        <div className='addedExtraIngredient'>
+                                            <p>extra {ingredient.name}</p>
+                                            <Button 
+                                                className = {'removeItem'}
+                                                clickHandler = {() =>this.props.removeExtra(i)} 
+                                                title = {'Remove'}
+                                                content = {'X'}
+                                            />
+                                        </div>
+                                    }
+                                </li>
                         })}
-                        </ul>
-                        <h4 className='orderTotal'>Total: ${(this.props.orderTotal).toFixed(2)}</h4>
-                        <Button 
-                            className = {'checkout'}
-                            clickHandler = {() => this.completedEntreesCheckoutButton()} 
-                            title = {'Checkout'}
-                            content ={'Checkout'}
-                        />
-                    </div>
-                }
+                    </ul>
+                    <h4  className='orderTotal'>{this.props.entreeTotal > 0 ? '$' + (this.props.entreeTotal).toFixed(2) : null}</h4>
+                    {<button 
+                            onClick={() => this.props.finishCurrentEntree(this.props.currentEntreeId, this.props.entreeTypeName, this.props.selectedIngredients, this.props.entreeTotal)}
+                            disabled ={this.props.selectedIngredients < 1}
+                            className ={this.props.selectedIngredients <1 ? 'hideAddEntreeToOrder' : 'addEntreeToOrder'}>
+                            {this.props.selectedIngredients < 1 ? null : 'Add To Order'}
+                        </button>
+                    }
+                    {this.props.completedEntrees.length >= 1 && 
+                        <div>
+                            <ul id='completedEntreeList'>
+                            {this.props.completedEntrees.map((entrees, i) =>{
+                                return (
+                                    <li key={'completedEntree ' + i}>
+                                        <div  className='selectedIngredientItem'> 
+                                            <p>{entrees.entree_type} with {entrees.ingredients[0].name}</p>
+                                            <Button 
+                                                className = {'removeItem'}
+                                                clickHandler = {() =>this.props.removeCompletedEntree(i)} 
+                                                title = {'Remove'}
+                                                content = {'X'}
+                                            />
+                                        </div>
+                                    </li>)
+                            })}
+                            </ul>
+                            <h4 className='orderTotal'>Total: ${(this.props.orderTotal).toFixed(2)}</h4>
+                            <Button 
+                                className = {'checkout'}
+                                clickHandler = {() => this.completedEntreesCheckoutButton()} 
+                                title = {'Checkout'}
+                                content ={'Checkout'}
+                            />
+                        </div>
+                    }
+
+                </div>
             </div>
         );
     }

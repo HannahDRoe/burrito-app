@@ -9,30 +9,32 @@ body {
 li{
   list-style: none;
 }
-#mainContainer{
+/* #mainContainer{
   margin: 20px auto;
-}
+} */
 #selectEntreeContainer{
   display: flex;
   justify-content: center;
-
 }
 #selectEntreeHeader{
-  height: 50px;
   text-align: center;
+  font-size: 30px;
 }
 #selectEntree{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  margin-top: 50px;
   flex-basis: 53%;
 }
 .entreeTypes{
   width: 33%;
   margin: 20px;
   text-align: center;
+}
+.entreeTypes h4{
+  font-size: 22px;
+  margin: 20px auto ;
 }
 .entreeTypes img{
   width: 100px;
@@ -158,8 +160,8 @@ button p{
   align-items: center;
   width: inherit;
 }
-.displayOrderBtn, 
-.hideOrderBtn, 
+.displayOrderBtn button, 
+.hideOrderBtn button, 
 .hideAddEntreeToOrder{
   background: none;
   display: none;
