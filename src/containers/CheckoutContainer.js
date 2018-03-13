@@ -7,27 +7,9 @@ import Button from '../components/Button';
 
 class CheckoutContainer extends React.Component {
     render() {
-        console.log(this.props.completedEntrees)
         return (
             <section id='checkoutContainer'>
                 <h1>Order</h1>
-                {this.props.completedEntrees.map((entrees, i) =>{
-                    return( 
-                        <div className='checkoutCompletedEntreeList' key={'checkout-completed-entree-'+ i}>
-                            <h4>{entrees.entree_type}</h4>
-                            <ul className='checkoutCompletedEntree'>
-                                {entrees.ingredients.map((ingredients) =>{
-                                    return( 
-                                        <li> 
-                                            <p>{ingredients.name}</p>
-                                            {ingredients.addExtra ? <p>add extra{ingredients.name}</p> : null}
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                        </div>
-                    )
-                })}
                 <h2>Total: ${this.props.orderTotal.toFixed(2)}</h2>
                 <Button 
                     className = {'checkoutAddAnotherEntreeBtn'}
@@ -41,6 +23,23 @@ class CheckoutContainer extends React.Component {
                     title = {'Place Order'}
                     content={'Place Order'}
                 />
+                {this.props.completedEntrees.map((entrees, i) =>{
+                    return( 
+                        <div className='checkoutCompletedEntreeList' key={'checkout-completed-entreeList-'+ i}>
+                            <h4>{entrees.entree_type}</h4>
+                            <ul className='checkoutCompletedEntree'>
+                                {entrees.ingredients.map((ingredients) =>{
+                                    return( 
+                                        <li key ={'checkout-entree-item-'+ingredients.name}> 
+                                            <p>{ingredients.name}</p>
+                                            {ingredients.addExtra ? <p>add extra{ingredients.name}</p> : null}
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </div>
+                    )
+                })}
             </section>
         );
     }

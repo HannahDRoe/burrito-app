@@ -21,11 +21,7 @@ componentWillMount() {
 
 disableButtonClickHandler(itemId){
     let makeButtonDisabled;
-    this.props.selectedIngredients.map((ingredients) =>{
-        if (ingredients.id === itemId){
-            return makeButtonDisabled = ingredients.addExtra
-        } 
-    })
+    this.props.selectedIngredients.map((ingredients) => ingredients.id === itemId ?  makeButtonDisabled = ingredients.addExtra : null)
     return makeButtonDisabled;
 }
 

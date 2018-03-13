@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import './css/index.css';
-import './css/mediaQuries.css'
+import './css/mediaQueries.css'
 import Main from './containers/Main';
 import registerServiceWorker from './registerServiceWorker';
 

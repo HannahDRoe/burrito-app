@@ -9,9 +9,6 @@ body {
 li{
   list-style: none;
 }
-/* #mainContainer{
-  margin: 20px auto;
-} */
 #selectEntreeContainer{
   display: flex;
   justify-content: center;
@@ -243,20 +240,22 @@ button p{
   background-color:#35453E;
 }
 .checkoutAddAnotherEntreeBtn{
-  margin-right: 30px;
+  margin-right: 15px;
+  width: 45%;
 }
 #checkoutContainer{
-  position:relative;
   width: 500px;
   margin: 0 auto;
+  text-align: center;
 
 }
 .placeOrderBtn{
   background-color: #963019;
   color: #fff;
-  width: 120px;
+  width: 45%;
   height: 50px;
   font-size: 18px;
+  margin-left: 15px;
 
 }
 .placeOrderBtn:hover{

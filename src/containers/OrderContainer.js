@@ -7,7 +7,6 @@ import { getIngredientsAddedToOrder,
         getEntreeTypeName, 
         getEntreeId, 
         getEntreeTotal, 
-        getORderTotal, 
         getOrderTotal,
         getCompletedEntrees} from '../reducers/selectors';
 import {removeSelectedIngredient, 

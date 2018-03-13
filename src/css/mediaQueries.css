@@ -40,17 +40,13 @@
     #ingredientListItemsContainer{
         margin: 0 auto;
         width: 100%;
-
     }
     .ingredientListItem{
         width: 100%;
         height: 100px;
         margin: 5px 25px 5px 0px;
-
         align-items: center;
         flex-direction: row;
-        
-
     }
     .ingredientListItem:hover{
         box-shadow: none;
@@ -69,13 +65,11 @@
     .ingredientItemImg{
         width: 125px;
         object-fit: cover;
-
     }
     .ingredientListItem p{
         font-size: 14px;
         line-height: 1;
         width: 50%;
-
     }
     .ingredientListItem p,
     .ingredientListItem h4{
@@ -98,20 +92,17 @@
         width: 150px;
         margin: 0px;
         background-color: #f6f1ed;
-        /* padding: 10px 0px 10px 10px;  */
         border-right: 1px solid #ddd;
         border-left: 1px solid #ddd;
         border-top:  1px solid #ddd;
-
+        cursor: pointer;
     }
     .displayOrderBtn{
         transform: translateX(-80px) rotate(270deg);
         position: fixed;
-        /* transform:); */
         width: 150px;
         margin: 0px;
         top: 75px;
-
     }
     .hideOrderBtn{
         width: 150px;
@@ -144,7 +135,6 @@
         top:0px;
         height: 97%;
         overflow-x: scroll;
-
     }
     #selectedIngredientsList{
         width: 225px;
@@ -152,8 +142,8 @@
     .checkout{
         width: 225px;
     }
-    #checkoutContainer{
-        margin: 20px;
+    .checkoutCompletedEntreeList{
+        border-top: 1px solid #ddd;
     }
 
 }
@@ -162,20 +152,30 @@
     .ingredientListItem{
         height: 105px;
     }
-
     .ingredientItemImg {
       width: 90px;
       height: 100%;
-
     }
     .ingredientListItem p{
         width: 65%;
         padding: 0px;
-
+    }
+    #checkoutContainer{
+        margin: 20px;
+    }
+    .checkoutAddAnotherEntreeBtn{
+        margin-right:0px;
+        width: 75%;
+    }
+    #checkoutContainer{
+        width: 75%;
+        margin: 0 auto;
+        text-align: center;
     }
     .placeOrderBtn{
+        width: 75%;
         display: block;
-        margin-top: 20px;
+        margin: 20px auto;
     }
 }
 @media  (max-width:  400px) {
