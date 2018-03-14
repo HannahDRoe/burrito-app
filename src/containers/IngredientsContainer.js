@@ -24,7 +24,12 @@ disableButtonClickHandler(itemId){
     this.props.selectedIngredients.map((ingredients) => ingredients.id === itemId ?  makeButtonDisabled = ingredients.addExtra : null)
     return makeButtonDisabled;
 }
-
+indicateAddToOrder(itemId){
+    let indicateItemAddedToOrder;
+    this.props.selectedIngredients.map((ingredients) => ingredients.id === itemId ? indicateItemAddedToOrder=true : null)
+    return indicateItemAddedToOrder;
+    // console.log(indicateItemAddedToOrder)
+}
     render() {
         return (
             <div id='ingredientsContainer'>
@@ -58,6 +63,7 @@ disableButtonClickHandler(itemId){
                                         itemAddExtraPrice = {item.additional_price_for_extra > 0 && (item.additional_price_for_extra/100).toFixed(2)}
                                         canAddExtra={this.props.canAddExtra}
                                         addExtraOnClick ={() =>{this.props.addExtra(item.id)}}
+                                        indicateAddedToOrder ={this.indicateAddToOrder(item.id)}
                                         disableButton = {this.disableButtonClickHandler(item.id)}
                                     />
                                 })
