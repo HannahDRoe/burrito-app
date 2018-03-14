@@ -4,8 +4,15 @@ import { ingredient_categories } from '../data/ingredient_categories';
 const IngredientListItem = (props) =>{
 
     return (     
-        <div className= {props.className}>
+        <div className={props.className}>
             <div onClick={props.listItemOnClick} className={'ingredientItemImgTextContainer'}>
+                {props.indicateAddedToOrder &&  
+                    <div className='itemAddedToOrder'>
+                        <img 
+                            src={'https://s3-us-west-2.amazonaws.com/burrito-app/checkmark-white.svg'}
+                        />
+                    </div> 
+                }
                 <img 
                     className={'ingredientItemImg'} 
                     src={props.imgSrc} 
@@ -20,7 +27,7 @@ const IngredientListItem = (props) =>{
                 <button disabled={props.disableButton}
                         className={'addExtraButton'} 
                         onClick={props.addExtraOnClick}>
-                            {props.disableButton ?  'Added to Order' : 'Add Extra? '+ (props.itemAddExtraPrice ? '$' + props.itemAddExtraPrice : '')}
+                            {props.disableButton ?  'Extra Added' : 'Add Extra? '+ (props.itemAddExtraPrice ? '$' + props.itemAddExtraPrice : '')}
                 </button>}
         </div>
     )

@@ -51,6 +51,20 @@
     .ingredientListItem:hover{
         box-shadow: none;
     }
+    .itemAddedToOrder{
+        position: relative;
+        top: -20px;
+        left: 40px;
+        height: 0;  
+        width: 0px;
+    }
+    .itemAddedToOrder img{
+        width: 20px;
+        background-color: #34141c;
+        border-radius: 50px;
+        padding: 10px;
+    
+    }
     .ingredientItemImgTextContainer{
         width: 100%;
         height: 100px;
@@ -60,11 +74,12 @@
     .ingredientItemText{
         display: flex;
         flex-direction: column;
-        flex-grow: 3;
+        width: 100%;
     }
     .ingredientItemImg{
         width: 125px;
         object-fit: cover;
+        
     }
     .ingredientListItem p{
         font-size: 14px;
@@ -148,7 +163,12 @@
 
 }
 @media  (max-width:  500px) {
-
+    .itemAddedToOrder{
+        left: 30px;
+      }
+      .itemAddedToOrder img{
+        padding: 5px;        
+      }
     .ingredientListItem{
         height: 105px;
     }
@@ -189,6 +209,10 @@
         height: 110px;
         margin: 5px 25px 5px 0px;
     }
+    .itemAddedToOrder{
+        left: 15px;
+      }
+
     .ingredientItemImg {
        width: 75px;
      }

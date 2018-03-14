@@ -98,6 +98,18 @@ button p{
   flex-wrap: wrap;
   margin: 50px auto;
 }
+.itemAddedToOrder{
+  position: relative;
+  top:50px;
+  height: 0;  
+}
+.itemAddedToOrder img{
+  width: 30px;
+  background-color: #34141c;
+  border-radius: 50px;
+  padding: 10px;
+  
+}
 .ingredientListItem{
   width: 225px;
   height: 330px;
