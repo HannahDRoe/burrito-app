@@ -1,8 +1,7 @@
 import React from 'react';
 
-
 const SelectEntreeItem = (props) =>{
-    let {className, entree, id, description, onClick, imgAlt, imgSrc} = props;
+    let {className, entree, description, onClick, imgAlt, imgSrc} = props;
 
     return(
         <div className={className}  onClick={onClick} title={entree}>
@@ -13,6 +12,4 @@ const SelectEntreeItem = (props) =>{
     )
 
 }   
-
-
 export default SelectEntreeItem;

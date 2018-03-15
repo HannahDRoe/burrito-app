@@ -25,8 +25,8 @@ class OrderContainer extends React.Component {
     }
     completedEntreesCheckoutButton() {
         if(this.props.currentEntreeId !== null && this.props.selectedIngredients.length >0){
-            this.props.finishCurrentEntree(this.props.currentEntreeId, this.props.entreeTypeName, this.props.selectedIngredients, this.props.entreeTotal),
-            this.props.checkout()
+            this.props.finishCurrentEntree(this.props.currentEntreeId, this.props.entreeTypeName, this.props.selectedIngredients, this.props.entreeTotal);
+            this.props.checkout();
                 
         }else{ 
             return this.props.checkout()
@@ -42,7 +42,6 @@ class OrderContainer extends React.Component {
             <div id='orderContainer' >
                 <h3 onClick = {() => this.toggleDisplayOrder()} className ={this.state.displayOrder ? 'displayOrderBtn' : 'hideOrderBtn'}>Your Order
                     <Button
-                        
                         clickHandler = {() => this.toggleDisplayOrder()}
                         img ={'https://s3-us-west-2.amazonaws.com/burrito-app/arrow.svg'}
                         imgAlt = {''}                    
