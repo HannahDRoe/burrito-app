@@ -19,8 +19,8 @@ class OrderContainer extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            displayOrder: true
-        }
+            hideOrder: true
+        }   
     
     }
     completedEntreesCheckoutButton() {
@@ -34,20 +34,24 @@ class OrderContainer extends React.Component {
     }
     toggleDisplayOrder() {
         this.setState({
-            displayOrder: !this.state.displayOrder
+           hideOrder: !this.state.hideOrder
         })
     }
+
     render() {
         return (
             <div id='orderContainer' >
-                <h3 onClick = {() => this.toggleDisplayOrder()} className ={this.state.displayOrder ? 'displayOrderBtn' : 'hideOrderBtn'}>Your Order
-                    <Button
-                        clickHandler = {() => this.toggleDisplayOrder()}
-                        img ={'https://s3-us-west-2.amazonaws.com/burrito-app/arrow.svg'}
-                        imgAlt = {''}                    
-                    />
-                </h3>
-                <div className={this.state.displayOrder ? 'hideOrderIngredients' : 'displayOrderIngredients'}>
+                <h3>Your Order</h3>
+                <Button 
+                    className ={this.state.hideOrder ? 'hideOrderBtn' : 'displayOrderBtn'}
+                    keyPressHandler ={(key) =>this.keyPressToggleKeys(key)}
+                    clickHandler ={() => this.toggleDisplayOrder()}
+                    title= {'Your Order'}
+                    content={'Your Order'}
+                    img ={'https://s3-us-west-2.amazonaws.com/burrito-app/arrow.svg'}
+                    imgAlt={''}
+                />
+                <div className={this.state.hideOrder ?  'hideOrderIngredients': 'displayOrderIngredients'}>
                     <h4>{this.props.entreeTypeName}</h4>
                     <ul id='selectedIngredientsList'>
                         {this.props.selectedIngredients.map((ingredient, i) =>{

@@ -4,7 +4,7 @@ const IngredientListItem = (props) =>{
 
     return (     
         <div className={props.className}>
-            <div onClick={props.listItemOnClick} className={'ingredientItemImgTextContainer'}>
+            <div onClick={props.listItemOnClick} onKeyPress={props.listItemOnClick} className={'ingredientItemImgTextContainer'} role='button' tabIndex='0'>
                 {props.indicateAddedToOrder &&  
                     <div className='itemAddedToOrder'>
                         <img 
