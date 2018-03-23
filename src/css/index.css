@@ -9,6 +9,10 @@ body {
 li{
   list-style: none;
 }
+button{
+  background: none;
+  height: 100%;
+}
 #selectEntreeContainer{
   display: flex;
   justify-content: center;
@@ -23,11 +27,15 @@ li{
   justify-content: center;
   align-content: center;
   flex-basis: 53%;
+
 }
 .entreeTypes{
   width: 33%;
   margin: 20px;
   text-align: center;
+  background: none;
+  height: 100%;
+  cursor: pointer;
 }
 .entreeTypes h4{
   font-size: 22px;
@@ -78,9 +86,13 @@ button p{
 .currentCategory{
   background-color: #963019;
   color: #f6f1ed;
-  width: 175px;
+  width: 185px;
   box-shadow: 1px 1px 5px #c7c6c6;
 }
+.currentCategory button{
+  color: #f6f1ed;
+}
+
 #ingredientCategoryNav{
   font-size: 18px;
   border-right: 1px solid #ddd;
@@ -88,10 +100,14 @@ button p{
 #ingredientCategoryNav ul{
   padding: 0;
 }
-#ingredientCategoryNav ul li{
-  cursor: pointer;
+.ingredientCategoryNavBtns{
+  width: 100%;
+  height: auto;
   padding: 10px;
+  font-size: 18px;
+  text-align: left;
 }
+
 #ingredientListItemsContainer{
   display: flex;
   justify-content: center;
@@ -119,6 +135,7 @@ button p{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  cursor: pointer;
 }
 .ingredientListItem:hover{
   box-shadow: 1px 1px 5px #e4e3e3;
@@ -136,6 +153,7 @@ button p{
   margin: 5px auto ;
   padding: 5px;
 }
+
 .addExtraButton{
   margin: 0 auto 10px;
   background-color:#34141c;
@@ -169,8 +187,8 @@ button p{
   align-items: center;
   width: inherit;
 }
-.displayOrderBtn button, 
-.hideOrderBtn button, 
+.displayOrderBtn, 
+.hideOrderBtn, 
 .hideAddEntreeToOrder{
   background: none;
   display: none;

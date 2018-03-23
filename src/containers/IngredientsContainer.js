@@ -8,9 +8,9 @@ import { getOrderId,
         getIfIngredientMaxLimitReached,
         getAddExtra,
 		getIngredientsAddedToOrder,
-		getIngredientCategoriesMaxLimit } from '../reducers/selectors'
+		getIngredientCategoriesMaxLimit } from '../reducers/selectors';
 import  IngredientListItem  from '../components/IngredientListItem';
-
+import Button from '../components/Button';
 import { selectIngredientCategory , addToOrder, addExtra} from '../actions/actionCreators';
 
 class IngredientsContainer extends React.Component {
@@ -30,18 +30,22 @@ indicateAddToOrder(itemId){
     return indicateItemAddedToOrder;
     // console.log(indicateItemAddedToOrder)
 }
+
     render() {
         return (
             <div id='ingredientsContainer'>
                 <nav id='ingredientCategoryNav'>
                     <ul>
                         {this.props.ingredientCategories.map(category =>{
-                            return <li className = {this.props.currentIngredientCategory=== category.id ? 'currentCategory' : ''}
-                                    key = {'ingredientCat-'+category.id} 
-                                    value={category.id} 
-                                    onClick={() => this.props.selectIngredientCategory(category.id)}>
-                                        {category.name}
-                                    </li>
+                            return <li className = {this.props.currentIngredientCategory=== category.id ? 'currentCategory' : null}
+                                        key = {'ingredientCat-'+category.id}>
+                                    <Button 
+                                        className={'ingredientCategoryNavBtns'}
+                                        clickHandler ={() => this.props.selectIngredientCategory(category.id)}
+                                        title={category.id} 
+                                        content={category.name}
+                                    />
+                                 </li>
                             })
                         }
                     </ul>
@@ -54,7 +58,7 @@ indicateAddToOrder(itemId){
                                         key={this.props.orderId+'-il-'+item.id} 
                                         i = {i}
                                         className ={'ingredientListItem'}
-                                        listItemOnClick ={() =>{this.props.addToOrder(item.id, item.name, item.price, this.props.indexOfIngredientToReplace)}}
+                                        listItemOnClick ={() =>{this.props.addToOrder(item.id, item.name, item.price, this.props.indexOfIngredientToReplace)}}                                        keyPressHandler={() =>{this.props.addToOrder(item.id, item.name, item.price, this.props.indexOfIngredientToReplace)}}
                                         name = {item.name}
                                         description = {item.description}
                                         imgSrc = {item.img_src}

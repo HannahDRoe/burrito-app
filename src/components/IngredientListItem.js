@@ -1,15 +1,16 @@
 import React from 'react';
-import { ingredient_categories } from '../data/ingredient_categories';
 
 const IngredientListItem = (props) =>{
 
     return (     
         <div className={props.className}>
-            <div onClick={props.listItemOnClick} className={'ingredientItemImgTextContainer'}>
+            <div onClick={props.listItemOnClick} onKeyPress={props.listItemOnClick} className={'ingredientItemImgTextContainer'} role='button' tabIndex='0'>
                 {props.indicateAddedToOrder &&  
                     <div className='itemAddedToOrder'>
                         <img 
                             src={'https://s3-us-west-2.amazonaws.com/burrito-app/checkmark-white.svg'}
+                            alt={'Item Added to Order'}
+                            title={'Item Added To Order'}
                         />
                     </div> 
                 }

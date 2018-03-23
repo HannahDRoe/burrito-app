@@ -112,27 +112,32 @@
         border-top:  1px solid #ddd;
         cursor: pointer;
     }
-    .displayOrderBtn{
-        transform: translateX(-80px) rotate(270deg);
+
+    .displayOrderBtn,
+    .hideOrderBtn {
         position: fixed;
         width: 150px;
         margin: 0px;
         top: 75px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 18px;
+        background-color: #f6f1ed;
     }
     .hideOrderBtn{
-        width: 150px;
-        margin: 0px;
-        top: 75px;
-        position: fixed;
+        transform: translateX(-80px) rotate(270deg);
+    }
+    .displayOrderBtn{
         transform: translateX(-390px) rotate(270deg);
         z-index: 9999;
     }
-    .displayOrderBtn button,
-    .hideOrderBtn button{
-        display: block;
-    }
-    .displayOrderBtn button img{
+    .hideOrderBtn  img{
         transform: rotate(180deg);
+        float: right;
+    }
+    .displayOrderBtn img{
+        float: right;
     }
     .hideOrderIngredients{
         transform: translateX(200px);

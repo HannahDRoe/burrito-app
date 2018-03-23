@@ -7,9 +7,8 @@ export  const selectEntree = (entree) => {
         
     }
 }
-
 export const addToOrder = (itemId, itemName, itemPrice, ingredientIndex) => (dispatch, getState) => {  
-    let findDuplicates = getState().order.current_entree.ingredients_selected.filter((items)=>{ if(items.id === itemId){return itemId}})
+    let findDuplicates = getState().order.current_entree.ingredients_selected.filter((items)=> items.id === itemId ? itemId : null)
         if( findDuplicates.length < 1 ){
             dispatch({
                 type: 'ADD_TO_ORDER',
@@ -17,12 +16,11 @@ export const addToOrder = (itemId, itemName, itemPrice, ingredientIndex) => (dis
                 itemName,
                 itemPrice     
             });
-            if (Number.isInteger(ingredientIndex) ) {
+            if (Number.isInteger(ingredientIndex)) {
                     return dispatch(removeSelectedIngredient(ingredientIndex))
             }
         }
-};
-
+}
 export  const addExtra = (itemId) => {
     return {
         type: 'ADD_EXTRA',
@@ -52,7 +50,6 @@ export const selectIngredientCategory = (categoryId) =>{
         categoryId
     }
 }
-
 export const finishOrder = (currentOrder) => {
     return {
         type: 'FINISH_ORDER',
@@ -101,7 +98,6 @@ export const receiveData = (allData) =>{
         allData
     } 
 }
-  
 export const getAllData = () => dispatch => {
     mock_api.getData(allData => {
         dispatch(receiveData(allData))
