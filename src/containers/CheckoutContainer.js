@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {getCompletedEntrees, getOrderTotal} from '../reducers/selectors';
@@ -45,17 +46,32 @@ class CheckoutContainer extends React.Component {
     }
 }
 
+
 function mapStateToProps(state) {
     return {
         completedEntrees: getCompletedEntrees(state),
         orderTotal: getOrderTotal(state)
-
     };
 }
 
-
 const mapDispatchToProps = (dispatch) =>{
     return bindActionCreators({addAnotherEntree, placeOrder} , dispatch)
+}
+
+CheckoutContainer.propTypes = {
+    orderTotal: PropTypes.number.isRequired,
+    addAnotherEntree: PropTypes.func.isRequired,
+    placeOrder: PropTypes.func.isRequired,
+    completedEntrees: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        entree_type: PropTypes.string.isRequired,
+        ingredients: PropTypes.arrayOf(PropTypes.shape({
+            id:PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            addExtra: PropTypes.bool.isRequired
+        })),
+        entreeTotal: PropTypes.number.isRequired
+    }))
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckoutContainer);

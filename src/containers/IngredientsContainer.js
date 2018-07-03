@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 import { getOrderId, 
         getIngredientCategoriesForEntreeType, 
         getEntreeId,getCurrentIngredientCategory, 
@@ -58,7 +59,8 @@ indicateAddToOrder(itemId){
                                         key={this.props.orderId+'-il-'+item.id} 
                                         i = {i}
                                         className ={'ingredientListItem'}
-                                        listItemOnClick ={() =>{this.props.addToOrder(item.id, item.name, item.price, this.props.indexOfIngredientToReplace)}}                                        keyPressHandler={() =>{this.props.addToOrder(item.id, item.name, item.price, this.props.indexOfIngredientToReplace)}}
+                                        listItemOnClick ={() =>{this.props.addToOrder(item.id, item.name, item.price, this.props.indexOfIngredientToReplace)}}                                       
+                                        keyPressHandler={() =>{this.props.addToOrder(item.id, item.name, item.price, this.props.indexOfIngredientToReplace)}}
                                         name = {item.name}
                                         description = {item.description}
                                         imgSrc = {item.img_src}
@@ -98,5 +100,16 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) =>{
     return bindActionCreators({selectIngredientCategory, addToOrder, addExtra} , dispatch)
 }
-
+IngredientsContainer.propTypes = {
+    selectIngredientCategory: PropTypes.func.isRequired,
+    addToOrder: PropTypes.func.isRequired,
+    addExtra: PropTypes.func.isRequired,
+    ingredientCategories: PropTypes.array.isRequired,
+    selectedIngredients: PropTypes.array.isRequired,
+    currentIngredientCategory: PropTypes.string,
+    ingredientListItems: PropTypes.array,
+	orderId: PropTypes.string.isRequired,
+	indexOfIngredientToReplace: PropTypes.number,
+	canAddExtra: PropTypes.array,
+}
 export default connect(mapStateToProps, mapDispatchToProps)(IngredientsContainer);

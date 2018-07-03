@@ -1,10 +1,10 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 const IngredientListItem = (props) =>{
 
     return (     
-        <div className={props.className}>
-            <div onClick={props.listItemOnClick} onKeyPress={props.listItemOnClick} className={'ingredientItemImgTextContainer'} role='button' tabIndex='0'>
+        <div className={props.className} onClick={props.listItemOnClick} onKeyPress={props.listItemOnClick} role='button' tabIndex='0'>
+            <div  className={'ingredientItemImgTextContainer'} >
                 {props.indicateAddedToOrder &&  
                     <div className='itemAddedToOrder'>
                         <img 
@@ -24,7 +24,7 @@ const IngredientListItem = (props) =>{
                     <p>{props.description}</p>
                 </div>
             </div>
-            {props.itemCanAddExtra === true  && props.canAddExtra[props.i] && 
+            {props.itemCanAddExtra  && props.indicateAddedToOrder && 
                 <button disabled={props.disableButton}
                         className={'addExtraButton'} 
                         onClick={props.addExtraOnClick}>
@@ -34,6 +34,27 @@ const IngredientListItem = (props) =>{
     )
 }
 
+IngredientListItem.propTypes = {
+    className: PropTypes.string,
+    listItemOnClick: PropTypes.func,
+    indicateAddedToOrder: PropTypes.bool,
+    imgSrc: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    price: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool,
+    ]),
+    itemCanAddExtra: PropTypes.bool.isRequired,
+    addExtraOfOrderItem: PropTypes.array,
+    i: PropTypes.number.isRequired,
+    disableButton: PropTypes.bool,
+    addExtraOnClick: PropTypes.func.isRequired,
+    itemAddExtraPrice: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool,
+    ]),
+}
 
 
 export default IngredientListItem;
