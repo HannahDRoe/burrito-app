@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 import Button from '../components/Button';
 import { getIngredientsAddedToOrder,
         getOrderId, 
@@ -135,6 +136,21 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) =>{
     return bindActionCreators({removeSelectedIngredient, removeExtra, finishCurrentEntree, removeCompletedEntree, checkout} , dispatch)
+}
+OrderContainer.propTypes = {
+    selectedIngredients: PropTypes.array.isRequired,
+    orderId: PropTypes.string.isRequired,
+    entreeTypeName: PropTypes.string.isRequired,
+    currentEntreeId: PropTypes.string.isRequired,
+    entreeTotal: PropTypes.number.isRequired,
+    orderTotal: PropTypes.number,
+    completedEntrees: PropTypes.array,
+    removeSelectedIngredient: PropTypes.func.isRequired,
+    removeExtra: PropTypes.func.isRequired,
+    finishCurrentEntree: PropTypes.func.isRequired,
+    removeCompletedEntree: PropTypes.func.isRequired,
+    checkout: PropTypes.func.isRequired,
+
 }
 export default connect(mapStateToProps, mapDispatchToProps)(OrderContainer);
 

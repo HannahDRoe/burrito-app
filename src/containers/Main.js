@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 import SelectEntreeItem  from '../components/SelectEntreeItem';
 import IngredientsContainer from './IngredientsContainer';
 import OrderContainer  from './OrderContainer';
@@ -103,5 +104,14 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) =>{
     return bindActionCreators({selectEntree, resetCurrentOrder, addAnotherEntree, checkout} , dispatch)
 }
-
+Main.propTypes = {
+    appData: PropTypes.bool.isRequired,
+    orderStatus: PropTypes.string.isRequired,
+    entreeTypes: PropTypes.array,
+    orderId: PropTypes.string.isRequired,
+    selectEntree: PropTypes.func.isRequired,
+    resetCurrentOrder: PropTypes.func.isRequired,
+    addAnotherEntree: PropTypes.func.isRequired,
+    checkout: PropTypes.func.isRequired,
+}
 export default connect(mapStateToProps,mapDispatchToProps)(Main);
